@@ -15,7 +15,7 @@ const Navigation = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <div className="menu_container">
-                        <div>
+                        <div className='w-50'>
                             <nav>
                                 <ul>
                                     <li>
@@ -46,11 +46,9 @@ const Navigation = () => {
                                 </ul>
                             </nav>
                         </div>
-                        <div>
-                            <div className="query">
-                                <a href="#">terms</a>
-                                <a href="#">terms</a>
-                            </div>
+                        <div className="query">
+                            <a href="#">terms</a>
+                            <a href="#">terms</a>
                         </div>
                     </div>
                 </Offcanvas.Body>

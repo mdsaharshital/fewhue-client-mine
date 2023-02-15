@@ -8,6 +8,11 @@
     margin: 1.5rem 0;
 }
 
+.menu_container {
+    display: flex;
+    width: 100%;
+}
+
 .nav {
     cursor: pointer;
     display: flex;
@@ -36,7 +41,7 @@ ul {
     margin: 0;
     padding: 0;
     border-right: 1px solid rgba(0, 0, 0, 0.342);
-    width: 50%;
+    width: 100%;
 }
 
 ul li {
@@ -70,8 +75,6 @@ ul li {
 
 .link--ersa {
     padding: 0 7px;
-    letter-spacing: 1px;
-    text-indent: 1px;
 }
 
 .link--ersa::before {
@@ -94,4 +97,8 @@ ul li {
 
 .link--ersa:hover span {
     transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.query {
+    width: 50%;
 }
