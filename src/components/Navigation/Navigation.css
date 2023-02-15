@@ -1,0 +1,97 @@
+.navigation {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    margin: 1.5rem 0;
+}
+
+.nav {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.offcanvas-backdrop.show {
+    opacity: 0.1 !important;
+}
+
+.menu {
+    border: 1px solid transparent !important;
+    border-radius: 10px 10px 0 0;
+    background-color: rgb(238, 233, 225) !important;
+    height: auto !important;
+    width: 40vw;
+    margin: auto;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.342);
+    width: 50%;
+}
+
+ul li {
+    font-family: moret, serif;
+    font-size: 2.5rem;
+}
+
+
+
+.link {
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    color: #000 !important;
+}
+
+.link::before,
+.link::after {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    top: 100%;
+    left: 0;
+    pointer-events: none;
+}
+
+.link::before {
+    content: '';
+}
+
+.link--ersa {
+    padding: 0 7px;
+    letter-spacing: 1px;
+    text-indent: 1px;
+}
+
+.link--ersa::before {
+    top: 50%;
+    height: 2px;
+    transform-origin: 100% 50%;
+    transform: scale3d(0, 1, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 1, 0.8, 1);
+}
+
+.link--ersa:hover::before {
+    transform-origin: 0% 50%;
+    transform: scale3d(1, 1, 1);
+}
+
+.link--ersa span {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.4, 1, 0.8, 1);
+}
+
+.link--ersa:hover span {
+    transform: scale3d(1.1, 1.1, 1.1);
+}
