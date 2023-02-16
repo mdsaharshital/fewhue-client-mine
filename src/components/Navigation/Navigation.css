@@ -24,7 +24,7 @@
 }
 
 .offcanvas-backdrop.show {
-    opacity: 0.1 !important;
+    opacity: 0.19 !important;
 }
 
 .menu {
@@ -92,13 +92,23 @@ ul li {
 
 .link--ersa span {
     display: inline-block;
-    transition: transform 0.3s cubic-bezier(0.4, 1, 0.8, 1);
+    transition: all 0.3s cubic-bezier(0.4, 1, 0.8, 1);
 }
 
 .link--ersa:hover span {
     transform: scale3d(1.1, 1.1, 1.1);
+    font-style: italic;
 }
 
 .query {
     width: 50%;
+}
+
+.social_icon {
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.social_icon:hover {
+    scale: 1.1;
 }

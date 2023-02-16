@@ -1,5 +1,8 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import React, { useState } from 'react';
+import facebookLogo from '../../assets/FacebookLogo.svg'
+import instagramLogo from '../../assets/InstagramLogo.svg'
+import whatsappLogo from '../../assets/WhatsappLogo.svg'
 import './Navigation.css'
 
 const Navigation = () => {
@@ -46,9 +49,16 @@ const Navigation = () => {
                                 </ul>
                             </nav>
                         </div>
-                        <div className="query">
-                            <a href="#">terms</a>
-                            <a href="#">terms</a>
+                        <div className="query text-end pe-3">
+                            <div className="social py-5">
+                                <h6 className='py-2'>Follow us</h6>
+                                <a href='#'><img className='social_icon' src={facebookLogo} alt="facebooklogo" /></a>
+                                <a href='#'><img className='px-2 social_icon' src={instagramLogo} alt="instagramLogo" /></a>
+                                <a href='#'><img className='social_icon' src={whatsappLogo} alt="whatsappLogo" /></a>
+                            </div>
+                            <div className='pt-3'><a href="#">Return & polices</a></div>
+                            <div className='pb-3'><a href="#">Terms & Conditions</a></div>
+                            <p>©2023-Fewhew. All Rights Reserved.</p>
                         </div>
                     </div>
                 </Offcanvas.Body>
