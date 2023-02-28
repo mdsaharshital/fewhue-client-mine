@@ -12,11 +12,10 @@ const Header = () => {
         <>
             <Offcanvas className='cart_container h-75' show={showCart} placement='end' scroll={true} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Menu</Offcanvas.Title>
+                    <Offcanvas.Title>Cart</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    Some text as placeholder. In real life you can have the elements you
-                    have chosen. Like, text, images, lists, etc.
+                    YOURS CART IS EMPTY
                 </Offcanvas.Body>
             </Offcanvas>
             <div className='header_container fadeIn4'>

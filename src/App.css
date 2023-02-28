@@ -1,6 +1,25 @@
+/* shop */
+.shop_container {
+  width: 95%;
+  margin: auto;
+  min-height: 89%;
+  border: none !important;
+  border-radius: 10px 10px 0 0;
+  background-color: rgb(238, 233, 225) !important;
+}
+
+.shop_product_container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+}
+
 /* contact */
 .contact_container {
-  width: 35vw;
+  width: 100vw;
+  height: auto;
+  display: flex;
 }
 
 .contact-form {
@@ -213,6 +232,7 @@ textarea {
   font-weight: 800;
   /* font-style: italic; */
   align-self: center;
+  /* transform: skew(-10deg, -10deg) !important; */
 }
 
 
@@ -289,6 +309,7 @@ textarea {
   font-weight: 800;
   /* font-style: italic; */
   align-self: center;
+  transform: skew(-10deg, -10deg);
 }
 
 .gallery__item-link {
@@ -325,12 +346,24 @@ textarea {
   cursor: pointer;
 }
 
+.gallery__text_first {
+  font-size: 7vw;
+  line-height: 0.8;
+  text-transform: uppercase;
+  margin: 0 10vw 0 0;
+  font-family: moret, serif;
+  font-weight: 800;
+  transform: skew(-10deg, -10deg);
+  /* font-style: italic; */
+  align-self: center;
+}
 
 .gallery__text {
   font-size: 7vw;
   line-height: 0.8;
   text-transform: uppercase;
   margin: 0 10vw 0 14vw;
+  transform: skew(-10deg, -10deg);
   /* color: var(--color-gallery-title); */
   /* color: transparent; */
   /* -webkit-text-stroke: 1px #978c77; */
@@ -343,11 +376,82 @@ textarea {
   display: block;
 }
 
-
+.skew {
+  transform: skew(1deg, -4deg) !important;
+}
 
 .content {
   display: flex;
   flex-direction: column;
   height: 100vh;
   justify-content: center;
+}
+
+/* product card */
+.latest_products {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: auto;
+}
+
+.product_card {
+  position: relative;
+  margin-right: 5vw
+}
+
+.shop_product_card {
+  position: relative;
+  margin: 0 2vw 2vw 0;
+}
+
+.product_caption {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2rem;
+  display: inline-block;
+}
+
+.product_price_box {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+.product_price_box h5 {
+  font-size: 16px;
+}
+
+.product_img {
+  width: 30rem;
+  height: auto;
+  background-color: #ffffff3d;
+  border-radius: 10px;
+}
+
+.product_details_btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.product_card:nth-child(even) {
+  padding-top: 8vh;
+}
+
+
+
+/* emnei */
+
+.gallery__item-imginner img {
+  transition: all .5s;
+}
+
+.gallery__item-imginner img:hover {
+  scale: 1.2;
 }

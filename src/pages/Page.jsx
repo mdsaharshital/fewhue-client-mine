@@ -1,9 +1,11 @@
 
-import demoImg from '../pages/img/demo1/10.jpg'
-import cap from '../assets/LineCap.svg'
+import demoCap from '../assets/YT1.png'
+import takaIcon from '../assets/taka.svg'
+import caretRight from '../assets/CaretRight.svg'
 
 import '../../src/App.css'
 import { Offcanvas } from 'react-bootstrap';
+import { useState } from 'react';
 
 const catagoricsImg1 = 'https://images.pexels.com/photos/1460036/pexels-photo-1460036.jpeg?auto=compress&cs=tinysrgb&w=1600'
 const catagoricsImg2 = 'https://images.pexels.com/photos/1215445/pexels-photo-1215445.jpeg?auto=compress&cs=tinysrgb&w=1600'
@@ -11,11 +13,232 @@ const catagoricsImg3 = 'https://images.pexels.com/photos/1296284/pexels-photo-12
 const catagoricsImg4 = 'https://images.pexels.com/photos/209943/pexels-photo-209943.jpeg?auto=compress&cs=tinysrgb&w=1600'
 
 
-const Page = () => {
-
+const Page = (props) => {
+    const { show, handleShow, handleClose, showContact, handleContactClose } = props
     return (
         <>
-
+            <Offcanvas className='px-2 shop_container' show={show} placement='bottom' scroll={false} backdrop={true} onHide={handleClose}>
+                <Offcanvas.Header className='p-4' closeButton>
+                    <Offcanvas.Title className='fs-1'>Shop</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                    <div className="shop_product_container">
+                        <div className="shop_product_card">
+                            <div className="product_price_box">
+                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                <h5>450</h5>
+                            </div>
+                            {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                            <div className="product_img">
+                                <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                <div className="product_details_btn text-end px-2 py-2">
+                                    <h5>view product</h5>
+                                    {/* <img src={caretRight} alt="" /> */}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="shop_product_card">
+                            <div className="product_price_box">
+                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                <h5>450</h5>
+                            </div>
+                            {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                            <div className="product_img">
+                                <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                <div className="product_details_btn text-end px-2 py-2">
+                                    <h5>view product</h5>
+                                    {/* <img src={caretRight} alt="" /> */}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="shop_product_card">
+                            <div className="product_price_box">
+                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                <h5>450</h5>
+                            </div>
+                            {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                            <div className="product_img">
+                                <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                <div className="product_details_btn text-end px-2 py-2">
+                                    <h5>view product</h5>
+                                    {/* <img src={caretRight} alt="" /> */}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="shop_product_card">
+                            <div className="product_price_box">
+                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                <h5>450</h5>
+                            </div>
+                            {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                            <div className="product_img">
+                                <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                <div className="product_details_btn text-end px-2 py-2">
+                                    <h5>view product</h5>
+                                    {/* <img src={caretRight} alt="" /> */}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="shop_product_card">
+                            <div className="product_price_box">
+                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                <h5>450</h5>
+                            </div>
+                            {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                            <div className="product_img">
+                                <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                <div className="product_details_btn text-end px-2 py-2">
+                                    <h5>view product</h5>
+                                    {/* <img src={caretRight} alt="" /> */}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="shop_product_card">
+                            <div className="product_price_box">
+                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                <h5>450</h5>
+                            </div>
+                            {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                            <div className="product_img">
+                                <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                <div className="product_details_btn text-end px-2 py-2">
+                                    <h5>view product</h5>
+                                    {/* <img src={caretRight} alt="" /> */}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="shop_product_card">
+                            <div className="product_price_box">
+                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                <h5>450</h5>
+                            </div>
+                            {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                            <div className="product_img">
+                                <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                <div className="product_details_btn text-end px-2 py-2">
+                                    <h5>view product</h5>
+                                    {/* <img src={caretRight} alt="" /> */}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="shop_product_card">
+                            <div className="product_price_box">
+                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                <h5>450</h5>
+                            </div>
+                            {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                            <div className="product_img">
+                                <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                <div className="product_details_btn text-end px-2 py-2">
+                                    <h5>view product</h5>
+                                    {/* <img src={caretRight} alt="" /> */}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="shop_product_card">
+                            <div className="product_price_box">
+                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                <h5>450</h5>
+                            </div>
+                            {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                            <div className="product_img">
+                                <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                <div className="product_details_btn text-end px-2 py-2">
+                                    <h5>view product</h5>
+                                    {/* <img src={caretRight} alt="" /> */}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="shop_product_card">
+                            <div className="product_price_box">
+                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                <h5>450</h5>
+                            </div>
+                            {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                            <div className="product_img">
+                                <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                <div className="product_details_btn text-end px-2 py-2">
+                                    <h5>view product</h5>
+                                    {/* <img src={caretRight} alt="" /> */}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="shop_product_card">
+                            <div className="product_price_box">
+                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                <h5>450</h5>
+                            </div>
+                            {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                            <div className="product_img">
+                                <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                <div className="product_details_btn text-end px-2 py-2">
+                                    <h5>view product</h5>
+                                    {/* <img src={caretRight} alt="" /> */}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="shop_product_card">
+                            <div className="product_price_box">
+                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                <h5>450</h5>
+                            </div>
+                            {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                            <div className="product_img">
+                                <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                <div className="product_details_btn text-end px-2 py-2">
+                                    <h5>view product</h5>
+                                    {/* <img src={caretRight} alt="" /> */}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Offcanvas.Body>
+            </Offcanvas>
+            <Offcanvas className='shop_container' show={showContact} placement='bottom' backdrop={true} scroll={false} onHide={handleContactClose}>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title className='p-3'></Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                    <div>
+                        <div className="gallery__text"><span className="gallery__text-inner">Contact</span><span
+                            className="gallery__text-inner text-start">Us</span>
+                        </div>
+                        <div className="contact-form w-50 ms-auto mt-5 shadow">
+                            <div className="pt-5">
+                                <form id='from' className="py-5" >
+                                    <input name="name" placeholder="Your name" type="text" required />
+                                    <input name="user_email" placeholder="Your email" type="email" required />
+                                    <textarea name="message" rows="4" placeholder="Message" type="text" required />
+                                    <button type="submit" className="contact_btn">Send<i className="arrow ms-3 fas fa-long-arrow-alt-right"></i></button>                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </Offcanvas.Body>
+            </Offcanvas>
             <main data-scroll-section>
                 <div className="content">
                     <div className="gallery">
@@ -35,19 +258,21 @@ const Page = () => {
                                 <h1 data-scroll
                                     data-scroll-speed="1" className='love fadeIn3'>LOVE</h1>
 
-                                <button class="__button button--janus mx-auto d-block fadeIn4"><span className='shop'>Shop Now</span></button>
+                                <button onClick={handleShow} class="__button button--janus mx-auto d-block fadeIn4"><span className='shop'>Shop Now</span></button>
                             </div>
                         </div>
-                        <div className="gallery__text"><span className="gallery__text-inner" data-scroll
+                        <div className="gallery__text_first"><span className="gallery__text-inner" data-scroll
                             data-scroll-speed="3">Avaiable</span><span data-scroll data-scroll-speed="1"
                                 className="gallery__text-inner">categories</span>
                         </div>
                         <figure className="gallery__item">
                             <div className="gallery__item-img">
-                                <div className="gallery__item-imginner" style={{ backgroundImage: `url(${catagoricsImg1})` }}></div>
+                                <div className="gallery__item-imginner skew">
+                                    <img className="w-100" src={catagoricsImg1} alt="" />
+                                </div>
                             </div>
-                            <figcaption className="gallery__item-caption">
-                                <h2 className="gallery__item-title" data-scroll data-scroll-speed="1">Lycanthropy</h2>
+                            <figcaption className="gallery__item-caption ">
+                                <h2 className="gallery__item-title " data-scroll data-scroll-speed="1">Lycanthropy</h2>
                                 {/* <span className="gallery__item-number">05</span> */}
 
                                 {/* <a className="gallery__item-link">explore</a> */}
@@ -55,9 +280,11 @@ const Page = () => {
                         </figure>
                         <figure className="gallery__item">
                             <div className="gallery__item-img">
-                                <div className="gallery__item-imginner" style={{ backgroundImage: `url(${catagoricsImg2})` }}></div>
+                                <div className="gallery__item-imginner skew">
+                                    <img className='w-100' src={catagoricsImg2} alt="" />
+                                </div>
                             </div>
-                            <figcaption className="gallery__item-caption">
+                            <figcaption className="gallery__item-caption ">
                                 <h2 className="gallery__item-title" data-scroll data-scroll-speed="1">Mudlark</h2>
                                 {/* <span className="gallery__item-number">06</span> */}
 
@@ -66,9 +293,11 @@ const Page = () => {
                         </figure>
                         <figure className="gallery__item">
                             <div className="gallery__item-img">
-                                <div className="gallery__item-imginner" style={{ backgroundImage: `url(${catagoricsImg3})` }}></div>
+                                <div className="gallery__item-imginner skew">
+                                    <img className='w-100' src={catagoricsImg3} alt="" />
+                                </div>
                             </div>
-                            <figcaption className="gallery__item-caption">
+                            <figcaption className="gallery__item-caption ">
                                 <h2 className="gallery__item-title" data-scroll data-scroll-speed="1">Illywhacker</h2>
                                 {/* <span className="gallery__item-number">07</span> */}
                                 <p className="gallery__item-tags">
@@ -79,12 +308,14 @@ const Page = () => {
                         </figure>
                         <figure className="gallery__item">
                             <div className="gallery__item-img">
-                                <div className="gallery__item-imginner" style={{ backgroundImage: `url(${catagoricsImg4})` }}></div>
+                                <div className="gallery__item-imginner skew">
+                                    <img className='w-100' src={catagoricsImg4} alt="" />
+                                </div>
                             </div>
-                            <figcaption className="gallery__item-caption">
+                            <figcaption className="gallery__item-caption ">
                                 <h2 className="gallery__item-title" data-scroll data-scroll-speed="1">Disenthral</h2>
                                 {/* <span className="gallery__item-number">08</span> */}
-                                <p className="gallery__item-tags">
+                                <p className="gallery__item-tags skew">
                                     <span>#comming soon</span>
                                 </p>
                                 {/* <a className="gallery__item-link">explore</a> */}
@@ -92,72 +323,79 @@ const Page = () => {
                         </figure>
                         <div className="gallery__text"><span className="gallery__text-inner" data-scroll
                             data-scroll-speed="1">Latest</span><span data-scroll data-scroll-speed="3"
-                                className="gallery__text-inner">Drops</span></div>
-                        <figure className="gallery__item">
-                            <div className="gallery__item-img">
-                                <div className="gallery__item-imginner" style={{ backgroundImage: `url(${demoImg})` }}></div>
+                                className="gallery__text-inner">Drops</span>
+                        </div>
+                        <div className="latest_products">
+                            <div className="product_card">
+                                <div className="product_price_box">
+                                    <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                    <h5>450</h5>
+                                </div>
+                                {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                                <div className="product_img">
+                                    <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                    <div className="product_details_btn text-end px-2 py-2">
+                                        <h5>view product</h5>
+                                        {/* <img src={caretRight} alt="" /> */}
+                                    </div>
+                                </div>
                             </div>
-                            <figcaption className="gallery__item-caption">
-                                <h2 className="gallery__item-title" data-scroll data-scroll-speed="1">Abaya</h2>
-                                <span className="gallery__item-number">09</span>
-                                <p className="gallery__item-tags">
-                                    <span>#sun</span>
-                                    <span>#light</span>
-                                    <span>#air</span>
-                                </p>
-                                <a className="gallery__item-link">explore</a>
-                            </figcaption>
-                        </figure>
-                        <figure className="gallery__item">
-                            <div className="gallery__item-img">
-                                <div className="gallery__item-imginner" style={{ backgroundImage: `url(${demoImg})` }}></div>
+                            <div className="product_card">
+                                <div className="product_price_box">
+                                    <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                    <h5>450</h5>
+                                </div>
+                                {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                                <div className="product_img">
+                                    <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                    <div className="product_details_btn text-end px-2 py-2">
+                                        <h5>view product</h5>
+                                        {/* <img src={caretRight} alt="" /> */}
+                                    </div>
+                                </div>
                             </div>
-                            <figcaption className="gallery__item-caption">
-                                <h2 className="gallery__item-title" data-scroll data-scroll-speed="1">Hallux</h2>
-                                <span className="gallery__item-number">10</span>
-                                <p className="gallery__item-tags">
-                                    <span>#vital</span>
-                                    <span>#fog</span>
-                                    <span>#close</span>
-                                </p>
-                                <a className="gallery__item-link">explore</a>
-                            </figcaption>
-                        </figure>
-                        <figure className="gallery__item">
-                            <div className="gallery__item-img">
-                                <div className="gallery__item-imginner" style={{ backgroundImage: `url(${demoImg})` }}></div>
+                            <div className="product_card">
+                                <div className="product_price_box">
+                                    <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                    <h5>450</h5>
+                                </div>
+                                {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                                <div className="product_img">
+                                    <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                    <div className="product_details_btn text-end px-2 py-2">
+                                        <h5>view product</h5>
+                                        {/* <img src={caretRight} alt="" /> */}
+                                    </div>
+                                </div>
                             </div>
-                            <figcaption className="gallery__item-caption">
-                                <h2 className="gallery__item-title" data-scroll data-scroll-speed="1">Lablab</h2>
-                                <span className="gallery__item-number">11</span>
-                                <p className="gallery__item-tags">
-                                    <span>#cover</span>
-                                    <span>#bed</span>
-                                    <span>#window</span>
-                                </p>
-                                <a className="gallery__item-link">explore</a>
-                            </figcaption>
-                        </figure>
-                        <figure className="gallery__item">
-                            <div className="gallery__item-img">
-                                <div className="gallery__item-imginner" style={{ backgroundImage: `url(${demoImg})` }}></div>
+                            <div className="product_card">
+                                <div className="product_price_box">
+                                    <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
+                                    <h5>450</h5>
+                                </div>
+                                {/* <div className="product_caption text-end">
+                                    <h6>FW_304</h6>
+                                </div> */}
+                                <div className="product_img">
+                                    <img className='w-100 img-fluid' src={demoCap} alt="" />
+                                    <div className="product_details_btn text-end px-2 py-2">
+                                        <h5>view product</h5>
+                                        {/* <img src={caretRight} alt="" /> */}
+                                    </div>
+                                </div>
                             </div>
-                            <figcaption className="gallery__item-caption">
-                                <h2 className="gallery__item-title" data-scroll data-scroll-speed="1">Momisom</h2>
-                                <span className="gallery__item-number">12</span>
-                                <p className="gallery__item-tags">
-                                    <span>#sad</span>
-                                    <span>#mouth</span>
-                                    <span>#tear</span>
-                                </p>
-                                <a className="gallery__item-link">explore</a>
-                            </figcaption>
-                        </figure>
-                        <div className="gallery__text"><span className="gallery__text-inner" data-scroll
-                            data-scroll-speed="1">Contact</span><span data-scroll data-scroll-speed="2"
-                                className="gallery__text-inner text-center">Us👋</span>
                         </div>
                         <div className="contact_container ps-5">
+                            <div className="gallery__text"><span className="gallery__text-inner" data-scroll
+                                data-scroll-speed="1">Contact</span><span data-scroll data-scroll-speed="2"
+                                    className="gallery__text-inner text-center">Us</span>
+                            </div>
                             <div className="contact-form ms-5 mt-5 shadow">
                                 <div className="pt-5">
                                     <form id='from' className="py-5" >
