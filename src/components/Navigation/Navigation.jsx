@@ -5,7 +5,7 @@ import instagramLogo from '../../assets/InstagramLogo.svg'
 import whatsappLogo from '../../assets/WhatsappLogo.svg'
 import './Navigation.css'
 
-const Navigation = ({ handleShow, handleContactShow }) => {
+const Navigation = ({ handleShopShow, handleContactShow }) => {
     const [showNav, setShowNav] = useState(false);
 
     const handleNavClose = () => setShowNav(false);
@@ -23,7 +23,7 @@ const Navigation = ({ handleShow, handleContactShow }) => {
                                 <ul>
                                     <li>
                                         <a className="link link--ersa">
-                                            <span onClick={handleShow}>Shop</span>
+                                            <span onClick={handleShopShow}>Shop</span>
                                         </a>
                                     </li>
                                     <li>

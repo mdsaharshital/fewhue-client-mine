@@ -1,5 +1,4 @@
 import './App.css';
-import demoImg from './pages/img/demo1/10.jpg'
 import Page from './pages/Page'
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { useRef, useState } from 'react';
@@ -8,40 +7,13 @@ import Header from './components/Header/Header';
 
 function App() {
   const containerRef = useRef(null)
-  const [show, setShow] = useState(false);
+  const [showShop, setShowShop] = useState(false);
   const [showContact, setShowContact] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShopClose = () => setShowShop(false);
+  const handleShopShow = () => setShowShop(true);
   const handleContactShow = () => setShowContact(true);
   const handleContactClose = () => setShowContact(false);
-
-  const demoData = [
-    {
-      id: '1',
-      name: 'snapbag',
-      price: '350',
-      img: demoImg
-    },
-    {
-      id: '2',
-      name: 'snapbag',
-      price: '350',
-      img: demoImg
-    },
-    {
-      id: '3',
-      name: 'snapbag',
-      price: '350',
-      img: demoImg
-    },
-    {
-      id: '4',
-      name: 'snapbag',
-      price: '350',
-      img: demoImg
-    },
-  ]
 
   return (
     <div className="App">
@@ -57,18 +29,18 @@ function App() {
       >
         <main data-scroll-container ref={containerRef}>
           <Page
-            show={show}
+            showShop={showShop}
             showContact={showContact}
-            handleClose={handleClose}
-            handleShow={handleShow}
+            handleShopClose={handleShopClose}
+            handleShopShow={handleShopShow}
             handleContactClose={handleContactClose}
           />
         </main>
       </LocomotiveScrollProvider>
       <Navigation
-        show={show}
-        handleClose={handleClose}
-        handleShow={handleShow}
+        showShop={showShop}
+        handleShopClose={handleShopClose}
+        handleShopShow={handleShopShow}
         handleContactShow={handleContactShow}
       />
     </div>

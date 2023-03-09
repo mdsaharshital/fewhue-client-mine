@@ -1,247 +1,47 @@
 
 import demoCap from '../assets/YT1.png'
-import takaIcon from '../assets/taka.svg'
-import caretRight from '../assets/CaretRight.svg'
-
+import ProductCard from '../components/ProductCard/ProductCard';
 import '../../src/App.css'
-import { Offcanvas } from 'react-bootstrap';
-import { useState } from 'react';
+import Shop from './Shop';
+import Contact from './Contact';
 
 const catagoricsImg1 = 'https://images.pexels.com/photos/1460036/pexels-photo-1460036.jpeg?auto=compress&cs=tinysrgb&w=1600'
 const catagoricsImg2 = 'https://images.pexels.com/photos/1215445/pexels-photo-1215445.jpeg?auto=compress&cs=tinysrgb&w=1600'
 const catagoricsImg3 = 'https://images.pexels.com/photos/1296284/pexels-photo-1296284.jpeg?auto=compress&cs=tinysrgb&w=1600'
 const catagoricsImg4 = 'https://images.pexels.com/photos/209943/pexels-photo-209943.jpeg?auto=compress&cs=tinysrgb&w=1600'
 
+const productDemoData = [
+    {
+        id: 1,
+        price: 450,
+        img: demoCap
+    },
+    {
+        id: 2,
+        price: 450,
+        img: demoCap
+    },
+    {
+        id: 3,
+        price: 450,
+        img: demoCap
+    },
+    {
+        id: 4,
+        price: 450,
+        img: demoCap
+    }
+]
 
 const Page = (props) => {
-    const { show, handleShow, handleClose, showContact, handleContactClose } = props
+    const { showShop, handleShopShow, handleShopClose, showContact, handleContactClose } = props
     return (
         <>
-            <Offcanvas className='px-2 shop_container' show={show} placement='bottom' scroll={false} backdrop={true} onHide={handleClose}>
-                <Offcanvas.Header className='p-4' closeButton>
-                    <Offcanvas.Title className='fs-1'>Shop</Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                    <div className="shop_product_container">
-                        <div className="shop_product_card">
-                            <div className="product_price_box">
-                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                <h5>450</h5>
-                            </div>
-                            {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                            <div className="product_img">
-                                <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                <div className="product_details_btn text-end px-2 py-2">
-                                    <h5>view product</h5>
-                                    {/* <img src={caretRight} alt="" /> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shop_product_card">
-                            <div className="product_price_box">
-                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                <h5>450</h5>
-                            </div>
-                            {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                            <div className="product_img">
-                                <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                <div className="product_details_btn text-end px-2 py-2">
-                                    <h5>view product</h5>
-                                    {/* <img src={caretRight} alt="" /> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shop_product_card">
-                            <div className="product_price_box">
-                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                <h5>450</h5>
-                            </div>
-                            {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                            <div className="product_img">
-                                <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                <div className="product_details_btn text-end px-2 py-2">
-                                    <h5>view product</h5>
-                                    {/* <img src={caretRight} alt="" /> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shop_product_card">
-                            <div className="product_price_box">
-                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                <h5>450</h5>
-                            </div>
-                            {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                            <div className="product_img">
-                                <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                <div className="product_details_btn text-end px-2 py-2">
-                                    <h5>view product</h5>
-                                    {/* <img src={caretRight} alt="" /> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shop_product_card">
-                            <div className="product_price_box">
-                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                <h5>450</h5>
-                            </div>
-                            {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                            <div className="product_img">
-                                <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                <div className="product_details_btn text-end px-2 py-2">
-                                    <h5>view product</h5>
-                                    {/* <img src={caretRight} alt="" /> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shop_product_card">
-                            <div className="product_price_box">
-                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                <h5>450</h5>
-                            </div>
-                            {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                            <div className="product_img">
-                                <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                <div className="product_details_btn text-end px-2 py-2">
-                                    <h5>view product</h5>
-                                    {/* <img src={caretRight} alt="" /> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shop_product_card">
-                            <div className="product_price_box">
-                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                <h5>450</h5>
-                            </div>
-                            {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                            <div className="product_img">
-                                <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                <div className="product_details_btn text-end px-2 py-2">
-                                    <h5>view product</h5>
-                                    {/* <img src={caretRight} alt="" /> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shop_product_card">
-                            <div className="product_price_box">
-                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                <h5>450</h5>
-                            </div>
-                            {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                            <div className="product_img">
-                                <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                <div className="product_details_btn text-end px-2 py-2">
-                                    <h5>view product</h5>
-                                    {/* <img src={caretRight} alt="" /> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shop_product_card">
-                            <div className="product_price_box">
-                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                <h5>450</h5>
-                            </div>
-                            {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                            <div className="product_img">
-                                <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                <div className="product_details_btn text-end px-2 py-2">
-                                    <h5>view product</h5>
-                                    {/* <img src={caretRight} alt="" /> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shop_product_card">
-                            <div className="product_price_box">
-                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                <h5>450</h5>
-                            </div>
-                            {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                            <div className="product_img">
-                                <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                <div className="product_details_btn text-end px-2 py-2">
-                                    <h5>view product</h5>
-                                    {/* <img src={caretRight} alt="" /> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shop_product_card">
-                            <div className="product_price_box">
-                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                <h5>450</h5>
-                            </div>
-                            {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                            <div className="product_img">
-                                <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                <div className="product_details_btn text-end px-2 py-2">
-                                    <h5>view product</h5>
-                                    {/* <img src={caretRight} alt="" /> */}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shop_product_card">
-                            <div className="product_price_box">
-                                <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                <h5>450</h5>
-                            </div>
-                            {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                            <div className="product_img">
-                                <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                <div className="product_details_btn text-end px-2 py-2">
-                                    <h5>view product</h5>
-                                    {/* <img src={caretRight} alt="" /> */}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Offcanvas.Body>
-            </Offcanvas>
-            <Offcanvas className='shop_container' show={showContact} placement='bottom' backdrop={true} scroll={false} onHide={handleContactClose}>
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title className='p-3'></Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                    <div>
-                        <div className="gallery__text"><span className="gallery__text-inner">Contact</span><span
-                            className="gallery__text-inner text-start">Us</span>
-                        </div>
-                        <div className="contact-form w-50 ms-auto mt-5 shadow">
-                            <div className="pt-5">
-                                <form id='from' className="py-5" >
-                                    <input name="name" placeholder="Your name" type="text" required />
-                                    <input name="user_email" placeholder="Your email" type="email" required />
-                                    <textarea name="message" rows="4" placeholder="Message" type="text" required />
-                                    <button type="submit" className="contact_btn">Send<i className="arrow ms-3 fas fa-long-arrow-alt-right"></i></button>                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </Offcanvas.Body>
-            </Offcanvas>
+            <Shop showShop={showShop} handleShopClose={handleShopClose} />
+            <Contact showContact={showContact} handleContactClose={handleContactClose} />
             <main data-scroll-section>
                 <div className="content">
-                    <div className="gallery">
+                    <div className="page_container">
                         <div className="landing">
                             <div className="cap">
                                 <svg width="100%" height="100%" viewBox="0 0 713 470" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -258,7 +58,7 @@ const Page = (props) => {
                                 <h1 data-scroll
                                     data-scroll-speed="1" className='love fadeIn3'>LOVE</h1>
 
-                                <button onClick={handleShow} class="__button button--janus mx-auto d-block fadeIn4"><span className='shop'>Shop Now</span></button>
+                                <button onClick={handleShopShow} class="__button button--janus mx-auto d-block fadeIn4"><span className='shop'>Shop Now</span></button>
                             </div>
                         </div>
                         <div className="gallery__text_first"><span className="gallery__text-inner" data-scroll
@@ -326,70 +126,14 @@ const Page = (props) => {
                                 className="gallery__text-inner">Drops</span>
                         </div>
                         <div className="latest_products">
-                            <div className="product_card">
-                                <div className="product_price_box">
-                                    <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                    <h5>450</h5>
-                                </div>
-                                {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                                <div className="product_img">
-                                    <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                    <div className="product_details_btn text-end px-2 py-2">
-                                        <h5>view product</h5>
-                                        {/* <img src={caretRight} alt="" /> */}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="product_card">
-                                <div className="product_price_box">
-                                    <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                    <h5>450</h5>
-                                </div>
-                                {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                                <div className="product_img">
-                                    <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                    <div className="product_details_btn text-end px-2 py-2">
-                                        <h5>view product</h5>
-                                        {/* <img src={caretRight} alt="" /> */}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="product_card">
-                                <div className="product_price_box">
-                                    <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                    <h5>450</h5>
-                                </div>
-                                {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                                <div className="product_img">
-                                    <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                    <div className="product_details_btn text-end px-2 py-2">
-                                        <h5>view product</h5>
-                                        {/* <img src={caretRight} alt="" /> */}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="product_card">
-                                <div className="product_price_box">
-                                    <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
-                                    <h5>450</h5>
-                                </div>
-                                {/* <div className="product_caption text-end">
-                                    <h6>FW_304</h6>
-                                </div> */}
-                                <div className="product_img">
-                                    <img className='w-100 img-fluid' src={demoCap} alt="" />
-                                    <div className="product_details_btn text-end px-2 py-2">
-                                        <h5>view product</h5>
-                                        {/* <img src={caretRight} alt="" /> */}
-                                    </div>
-                                </div>
-                            </div>
+                            {
+                                productDemoData.map(product => <ProductCard
+                                    key={product.id}
+                                    productPrice={product.price}
+                                    productImg={product.img}
+                                >
+                                </ProductCard>)
+                            }
                         </div>
                         <div className="contact_container ps-5">
                             <div className="gallery__text"><span className="gallery__text-inner" data-scroll
