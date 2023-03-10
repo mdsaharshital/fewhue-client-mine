@@ -1,0 +1,27 @@
+.highlighted_text {
+    font-size: 7vw;
+    line-height: 0.8;
+    text-transform: uppercase;
+    margin: 0 10vw 0 14vw;
+    transform: skew(-10deg, -10deg);
+}
+
+.highlighted_text-inner {
+    display: block;
+}
+
+.highlighted_text {
+    font-family: moret, serif;
+    font-weight: 800;
+    /* font-style: italic; */
+    align-self: center;
+    transform: skew(-10deg, -10deg);
+}
+
+.gallery__item-imginner img {
+    transition: all .5s;
+}
+
+.gallery__item-imginner img:hover {
+    scale: 1.2;
+}

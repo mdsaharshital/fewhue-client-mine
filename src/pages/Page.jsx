@@ -4,6 +4,9 @@ import ProductCard from '../components/ProductCard/ProductCard';
 import '../../src/App.css'
 import Shop from './Shop';
 import Contact from './Contact';
+import HighLightedTitle from '../components/HighLightedTitle/HighLightedTitle';
+import HighLightedTitle2 from '../components/HighLightedTitle2/HighLightedTitle2';
+import WhyFewhew from '../components/WhyFewheu/WhyFewhew';
 
 const catagoricsImg1 = 'https://images.pexels.com/photos/1460036/pexels-photo-1460036.jpeg?auto=compress&cs=tinysrgb&w=1600'
 const catagoricsImg2 = 'https://images.pexels.com/photos/1215445/pexels-photo-1215445.jpeg?auto=compress&cs=tinysrgb&w=1600'
@@ -61,10 +64,7 @@ const Page = (props) => {
                                 <button onClick={handleShopShow} class="__button button--janus mx-auto d-block fadeIn4"><span className='shop'>Shop Now</span></button>
                             </div>
                         </div>
-                        <div className="gallery__text_first"><span className="gallery__text-inner" data-scroll
-                            data-scroll-speed="3">Avaiable</span><span data-scroll data-scroll-speed="1"
-                                className="gallery__text-inner">categories</span>
-                        </div>
+                        <HighLightedTitle title1={'Available'} title2={'categories'} />
                         <figure className="gallery__item">
                             <div className="gallery__item-img">
                                 <div className="gallery__item-imginner skew">
@@ -121,10 +121,7 @@ const Page = (props) => {
                                 {/* <a className="gallery__item-link">explore</a> */}
                             </figcaption>
                         </figure>
-                        <div className="gallery__text"><span className="gallery__text-inner" data-scroll
-                            data-scroll-speed="1">Latest</span><span data-scroll data-scroll-speed="3"
-                                className="gallery__text-inner">Drops</span>
-                        </div>
+                        <HighLightedTitle2 title1={'Latest'} title2={'Drops'} />
                         <div className="latest_products">
                             {
                                 productDemoData.map(product => <ProductCard
@@ -135,11 +132,10 @@ const Page = (props) => {
                                 </ProductCard>)
                             }
                         </div>
+                        <HighLightedTitle2 title1={'Why?'} title2={'Fewhew'} />
+                        <WhyFewhew />
                         <div className="contact_container ps-5">
-                            <div className="gallery__text"><span className="gallery__text-inner" data-scroll
-                                data-scroll-speed="1">Contact</span><span data-scroll data-scroll-speed="2"
-                                    className="gallery__text-inner text-center">Us</span>
-                            </div>
+                            <HighLightedTitle2 title1={'Contact'} title2={'Us'} />
                             <div className="contact-form ms-5 mt-5 shadow">
                                 <div className="pt-5">
                                     <form id='from' className="py-5" >

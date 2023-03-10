@@ -1,0 +1,10 @@
+.highlighted_title_first {
+    font-size: 7vw;
+    line-height: 0.8;
+    text-transform: uppercase;
+    margin: 0 10vw 0 0;
+    font-family: moret, serif;
+    font-weight: 800;
+    transform: skew(-10deg, -10deg);
+    align-self: center;
+}
