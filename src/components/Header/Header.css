@@ -54,6 +54,8 @@
     border: none !important;
     border-radius: 0 0 0 10px;
     background-color: rgb(240, 235, 228) !important;
+    width: 30vw !important;
+    height: 80vh;
 }
 
 .offcanvas-body::-webkit-scrollbar {
@@ -132,4 +134,34 @@
     to {
         opacity: 1;
     }
+}
+
+/* cart */
+.product_price_box_cart {
+    display: flex;
+    justify-content: start;
+    padding: 0 7px;
+}
+
+.swiper {
+    width: 100%;
+    height: 70%;
+}
+
+.swiper-slide {
+    background-color: #e2d9c7;
+    width: 14vw;
+    height: 88%;
+    border-radius: 10px !important;
+}
+
+.slider__container {
+    /* position: relative; */
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide-active {
+    transform: scale(1.1) !important;
+    transition: 0.3s;
 }

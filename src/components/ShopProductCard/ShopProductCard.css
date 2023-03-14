@@ -1,0 +1,38 @@
+.shop_product_card {
+    position: relative;
+}
+
+.shop_product_caption {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2rem;
+    display: inline-block;
+}
+
+.shop_product_price_box {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+}
+
+.shop_product_price_box h5 {
+    font-size: 16px;
+}
+
+.shop_product_img {
+    width: 30rem;
+    height: auto;
+    background-color: #ffffff3d;
+    border-radius: 10px;
+}
+
+.shop_product_details_btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}

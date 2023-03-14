@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { Offcanvas } from 'react-bootstrap';
 import cartIcon from '../../assets/ShoppingCart.svg'
+import takaIcon from '../../assets/taka.svg'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { EffectCoverflow, Pagination, Navigation } from "swiper";
+import demoCap from '../../assets/YT1.png'
 import './Header.css'
 
 const Header = () => {
@@ -8,14 +16,68 @@ const Header = () => {
 
     const handleClose = () => setShowCart(false);
     const handleShow = () => setShowCart(true);
+
+    const productDemoData = [
+        {
+            id: 1,
+            price: 450,
+            img: demoCap
+        },
+        {
+            id: 2,
+            price: 450,
+            img: demoCap
+        },
+        {
+            id: 3,
+            price: 450,
+            img: demoCap
+        }
+    ]
     return (
         <>
-            <Offcanvas className='cart_container h-75' show={showCart} placement='end' scroll={true} onHide={handleClose}>
+            <Offcanvas className='cart_container' show={showCart} placement='end' scroll={true} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Cart</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    YOURS CART IS EMPTY
+                    <Swiper
+                        modules={[EffectCoverflow, Pagination, Navigation]}
+                        effect={"coverflow"}
+                        grabCursor={true}
+                        centeredSlides={true}
+                        slidesPerView={"auto"}
+                        coverflowEffect={{
+                            rotate: 0,
+                            stretch: 0,
+                            depth: 100,
+                            modifier: 1,
+                            slideShadows: true,
+                        }}
+                        pagination={true}
+                        navigation
+                        className="mySwiper"
+                    >
+                        {
+                            productDemoData.map(s => <SwiperSlide
+                                key={s.id}
+                                productPrice={s.price}
+                                productImg={s.img}
+                            >
+                                <div className='slider__container'>
+                                    <div className='cart_des mt-4'>
+                                        <div className="product_price_box_cart skew_md">
+                                            <img className='me-1' width="15px" height="15px" src={takaIcon} alt="" />
+                                            <h5>{s.price}</h5>
+                                        </div>
+                                    </div>
+                                    <img className='slider__img w-100 img-fluid' src={s.img} alt="" />
+                                </div>
+                            </SwiperSlide>
+
+                            )
+                        }
+                    </Swiper>
                 </Offcanvas.Body>
             </Offcanvas>
             <div className='header_container fadeIn4'>
