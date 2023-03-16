@@ -7,10 +7,6 @@ import Contact from './Contact';
 import HighLightedTitle from '../components/HighLightedTitle/HighLightedTitle';
 import HighLightedTitle2 from '../components/HighLightedTitle2/HighLightedTitle2';
 import WhyFewhew from '../components/WhyFewheu/WhyFewhew';
-import mail from '../assets/mail.svg'
-import facebook from '../assets/FacebookLogo.svg'
-import instagram from '../assets/InstagramLogo.svg'
-import whatsapp from '../assets/WhatsappLogo.svg'
 import SocialGroup from '../components/SocialGroup/SocialGroup';
 
 const catagoricsImg1 = 'https://images.pexels.com/photos/1460036/pexels-photo-1460036.jpeg?auto=compress&cs=tinysrgb&w=1600'
@@ -42,10 +38,16 @@ const productDemoData = [
 ]
 
 const Page = (props) => {
-    const { showShop, handleShopShow, handleShopClose, showContact, handleContactClose } = props
+    const { showShop,
+        handleShopShow,
+        handleShopClose,
+        showContact,
+        handleContactClose,
+        handleShowProductDetails,
+    } = props
     return (
         <>
-            <Shop showShop={showShop} handleShopClose={handleShopClose} />
+            <Shop showShop={showShop} handleShopClose={handleShopClose} handleShowProductDetails={handleShowProductDetails} />
             <Contact showContact={showContact} handleContactClose={handleContactClose} />
             <main data-scroll-section>
                 <div className="content">
@@ -129,12 +131,17 @@ const Page = (props) => {
                         <HighLightedTitle2 title1={'Latest'} title2={'Drops'} />
                         <div className="latest_products">
                             {
-                                productDemoData.map(product => <ProductCard
-                                    key={product.id}
-                                    productPrice={product.price}
-                                    productImg={product.img}
+                                productDemoData.map(product => <div
+                                    onClick={handleShowProductDetails}
+                                    className="cursor_hover"
                                 >
-                                </ProductCard>)
+                                    <ProductCard
+                                        key={product.id}
+                                        productPrice={product.price}
+                                        productImg={product.img}
+                                    >
+                                    </ProductCard>
+                                </div>)
                             }
                         </div>
                         <HighLightedTitle2 title1={'Why?'} title2={'Fewhew'} />

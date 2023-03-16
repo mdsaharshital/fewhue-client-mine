@@ -4,7 +4,7 @@ import demoCap from '../assets/YT1.png'
 import ShopProductCard from '../components/ShopProductCard/ShopProductCard';
 import { useGetAllProductsQuery } from '../feature/product/productSlice';
 
-const Shop = ({ showShop, handleShopClose }) => {
+const Shop = ({ showShop, handleShopClose,handleShowProductDetails }) => {
     const { data } = useGetAllProductsQuery();
     const productDemoData = [
         {
@@ -58,8 +58,6 @@ const Shop = ({ showShop, handleShopClose }) => {
             img: demoCap
         },
     ]
-    console.log('data',data);
-
     return (
         <Offcanvas className='px-2 shop_container' show={showShop} placement='bottom' scroll={false} backdrop={true} onHide={handleShopClose}>
             <Offcanvas.Header className='p-4' closeButton>
@@ -72,10 +70,11 @@ const Shop = ({ showShop, handleShopClose }) => {
                             key={product._id}
                             sm={12}
                             md={4}
+                            className="cursor_hover"
+                            onClick={handleShowProductDetails}
                         >
                             <ShopProductCard
-                                productPrice={product.price}
-                                productId={product._id}
+                                product={product}
                             >
                             </ShopProductCard>
                         </Col>)
