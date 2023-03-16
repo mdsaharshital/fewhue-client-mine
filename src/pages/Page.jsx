@@ -8,6 +8,7 @@ import HighLightedTitle from '../components/HighLightedTitle/HighLightedTitle';
 import HighLightedTitle2 from '../components/HighLightedTitle2/HighLightedTitle2';
 import WhyFewhew from '../components/WhyFewheu/WhyFewhew';
 import SocialGroup from '../components/SocialGroup/SocialGroup';
+import { useGetAllProductsQuery } from '../feature/product/productSlice';
 
 const catagoricsImg1 = 'https://images.pexels.com/photos/1460036/pexels-photo-1460036.jpeg?auto=compress&cs=tinysrgb&w=1600'
 const catagoricsImg2 = 'https://images.pexels.com/photos/1215445/pexels-photo-1215445.jpeg?auto=compress&cs=tinysrgb&w=1600'
@@ -44,10 +45,12 @@ const Page = (props) => {
         showContact,
         handleContactClose,
         handleShowProductDetails,
-    } = props
+    } = props;
+
+    const { data } = useGetAllProductsQuery();
     return (
         <>
-            <Shop showShop={showShop} handleShopClose={handleShopClose} handleShowProductDetails={handleShowProductDetails} />
+            <Shop showShop={showShop} data={data} handleShopClose={handleShopClose} handleShowProductDetails={handleShowProductDetails} />
             <Contact showContact={showContact} handleContactClose={handleContactClose} />
             <main data-scroll-section>
                 <div className="content">
@@ -131,14 +134,13 @@ const Page = (props) => {
                         <HighLightedTitle2 title1={'Latest'} title2={'Drops'} />
                         <div className="latest_products">
                             {
-                                productDemoData.map(product => <div
+                                data?.products?.map(product => <div
                                     onClick={handleShowProductDetails}
                                     className="cursor_hover"
                                 >
                                     <ProductCard
-                                        key={product.id}
-                                        productPrice={product.price}
-                                        productImg={product.img}
+                                        key={product._id}
+                                        product={product}
                                     >
                                     </ProductCard>
                                 </div>)

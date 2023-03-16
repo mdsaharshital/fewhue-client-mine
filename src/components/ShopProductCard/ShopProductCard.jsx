@@ -10,8 +10,6 @@ import { useGetProductPhotoQuery } from '../../feature/product/productSlice';
 const ShopProductCard = ({ product }) => {
    const dispatch= useDispatch();
   const { data } = useGetProductPhotoQuery(product._id);
-    // const hello= PhotoConverter(product._id)
-    // console.log('',hello);
     return (
         <div className="shop_product_card" 
         onClick={ ()=>
