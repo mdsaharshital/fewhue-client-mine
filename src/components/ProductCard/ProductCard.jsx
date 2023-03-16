@@ -14,6 +14,7 @@ const ProductCard = ({product}) => {
     console.log('data',data);
     return (
         <div className="product_card" onClick={()=> dispatch(setProductDetails({...product}))}>
+
             <div className="product_price_box">
                 <img className='me-2' width="20px" height="20px" src={takaIcon} alt="" />
                 <h5>{product.price}</h5>
