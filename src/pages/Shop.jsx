@@ -2,8 +2,10 @@ import React from 'react';
 import { Col, Offcanvas, Row } from 'react-bootstrap';
 import demoCap from '../assets/YT1.png'
 import ShopProductCard from '../components/ShopProductCard/ShopProductCard';
+import { useGetAllProductsQuery } from '../feature/product/productSlice';
 
 const Shop = ({ showShop, handleShopClose }) => {
+    const { data } = useGetAllProductsQuery();
     const productDemoData = [
         {
             id: 1,
@@ -56,6 +58,8 @@ const Shop = ({ showShop, handleShopClose }) => {
             img: demoCap
         },
     ]
+    console.log('data',data);
+
     return (
         <Offcanvas className='px-2 shop_container' show={showShop} placement='bottom' scroll={false} backdrop={true} onHide={handleShopClose}>
             <Offcanvas.Header className='p-4' closeButton>
@@ -64,14 +68,14 @@ const Shop = ({ showShop, handleShopClose }) => {
             <Offcanvas.Body>
                 <Row className='w-90 mx-auto'>
                     {
-                        productDemoData.map(product => <Col
-                            key={product.id}
+                        data?.products?.map(product => <Col
+                            key={product._id}
                             sm={12}
                             md={4}
                         >
                             <ShopProductCard
                                 productPrice={product.price}
-                                productImg={product.img}
+                                productId={product._id}
                             >
                             </ShopProductCard>
                         </Col>)

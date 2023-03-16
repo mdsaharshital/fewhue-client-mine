@@ -83,9 +83,9 @@ const Header = () => {
             <div className='header_container fadeIn4'>
                 <div className="logo_container">
                     <div className="logo shadow">
-                        <img src="https://few-hue-client.vercel.app/assets/Asset%2027.png" alt="fewhew_logo" />
+                        <img src="https://few-hue-client.vercel.app/assets/Asset%2027.png" alt="fewheu_logo" />
                     </div>
-                    <div className="brand_name">FEWHEW</div>
+                    <div className="brand_name">FEWHEU</div>
                 </div>
             </div>
             <div className="cart fadeIn4" onClick={handleShow}>
