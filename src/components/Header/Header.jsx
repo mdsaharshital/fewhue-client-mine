@@ -18,7 +18,7 @@ const Header = () => {
     const handleShow = () => setShowCart(true);
     const { cart } = useSelector((auth) => auth.basket);
     const totalPrice = cart.reduce(
-      (acc, product) => acc + (product.price || 0),
+      (acc, product) => acc + (product.price* product.quantity || 0),
       0
     );
     console.log("totalPrice", totalPrice);

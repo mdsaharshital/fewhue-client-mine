@@ -22,26 +22,48 @@ export const basketSlice = createSlice({
       }
     },
     addToCart: (state, { payload }) => {
-      const selectedProduct = state.cart.find(
+      const productToAdd = payload;
+      const existingProductIndex = state.cart.findIndex(
+        (product) => product._id === productToAdd._id
+      );
+      if (existingProductIndex !== -1) {
+        const updatedCart = state.cart.map((product, index) =>
+          index === existingProductIndex
+            ? { ...product, quantity: product.quantity + 1 }
+            : product
+        );
+        return { ...state, cart: updatedCart };
+      } else {
+        const updatedCart = [...state.cart, { ...productToAdd, quantity: 1 }];
+        return { ...state, cart: updatedCart };
+      }
+    },
+    decreaseCartProduct: (state, { payload }) => {
+      const productIndex = state.cart.findIndex(
         (product) => product._id === payload._id
       );
-      console.log("sele", selectedProduct);
-      if (selectedProduct) {
-        const newCart = state.cart.filter(
-          (product) => product._id !== selectedProduct._id
-        );
+      const product = state.cart[productIndex];
+      if (product.quantity > 1) {
+        if (productIndex !== -1) {
+          const updatedProduct = {
+            ...state.cart[productIndex],
+            quantity: state.cart[productIndex].quantity - 1,
+          };
 
-        selectedProduct.quantity = selectedProduct.quantity + 1;
+          const updatedCart = [...state.cart];
+          updatedCart.splice(productIndex, 1, updatedProduct);
 
+          return {
+            ...state,
+            cart: updatedCart,
+          };
+        }
+      } else {
         return {
           ...state,
-          cart: [...newCart, selectedProduct],
+          cart: state.cart.filter((product) => product._id !== payload._id),
         };
       }
-      return {
-        ...state,
-        cart: [...state.cart, { ...payload, quantity: 1 }],
-      };
     },
     removeFromCart: (state, { payload }) => {
       state.cart = state.cart.filter((c) => c._id !== payload._id);
@@ -51,5 +73,11 @@ export const basketSlice = createSlice({
     },
   },
 });
-export const { setProductDetails, addToCart } = basketSlice.actions;
+export const {
+  setProductDetails,
+  addToCart,
+  removeFromCart,
+  decreaseCartProduct,
+  emptyCart,
+} = basketSlice.actions;
 export default basketSlice.reducer;

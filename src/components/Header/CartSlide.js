@@ -1,13 +1,23 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import takaIcon from "../../assets/taka.svg";
+import {
+  addToCart,
+  decreaseCartProduct,
+  removeFromCart,
+} from "../../feature/basket/basketSlice";
 import { useGetProductPhotoQuery } from "../../feature/product/productSlice";
 import { photoConverter } from "../../utils/photoConverter";
 
 const CartSlide = ({ product }) => {
   const { data } = useGetProductPhotoQuery(product._id);
+  const dispatch = useDispatch();
   return (
     <div className="slider__container">
-      <button className="remove_btn">
+      <button
+        className="remove_btn"
+        onClick={() => dispatch(removeFromCart(product))}
+      >
         <svg
           width="16"
           height="16"
@@ -50,6 +60,7 @@ const CartSlide = ({ product }) => {
       />
       <div className="qtn_counter">
         <svg
+          onClick={() => dispatch(decreaseCartProduct(product))}
           className="minus"
           width="20"
           height="20"
@@ -71,8 +82,9 @@ const CartSlide = ({ product }) => {
             stroke-linejoin="round"
           />
         </svg>
-        <span className="qtn">1</span>
+        <span className="qtn">{product.quantity}</span>
         <svg
+          onClick={() => dispatch(addToCart(product))}
           className="plus"
           width="20"
           height="20"
