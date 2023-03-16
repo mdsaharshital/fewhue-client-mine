@@ -1,31 +1,30 @@
 import React from 'react';
 import { Carousel, Offcanvas } from 'react-bootstrap';
-
-import demo from '../assets/YT1.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../feature/basket/basketSlice';
+import { useGetProductPhotoQuery } from '../feature/product/productSlice';
+import { photoConverter} from '../utils/photoConverter';
 
 
 const ProductDetails = (props) => {
+    const dispatch= useDispatch()
     const { showProductDetails, handleProductDetailsClose } = props
+    const {productDetails}= useSelector(auth=> auth.basket)
+    const {_id, name,price, description, categoy,slug}= productDetails || {}
+    const { data } = useGetProductPhotoQuery(_id);
 
-    const ProductDetailsDemoData = [
-        {
-            ProductImgDemodata: [
-                {
-                    id: 1,
-                    imgUrl: demo
-                },
-                {
-                    id: 2,
-                    imgUrl: demo
-                },
-                {
-                    id: 3,
-                    imgUrl: demo
-                },
+    console.log('hey',productDetails);
+        const ProductDetailsDemoData = [
+            {
+                ProductImgDemodata: [
+                    {
+                        id: 1,
+                        imgUrl: photoConverter(data)
+                    },
 
-            ]
-        }
-    ]
+                ]
+            }
+        ]
     console.log(ProductDetailsDemoData[0].ProductImgDemodata)
     return (
         <div>
@@ -56,10 +55,12 @@ const ProductDetails = (props) => {
                             </Carousel>
                         </div>
                         <div className="w-30 px-5 py-4">
-                            <h2 className='prodcutName font-bold'>Burgundy retro dad cap</h2>
+                            <h2 className='prodcutName font-bold'>{name}</h2>
                             {/* use only basic style to complete here  */}
 
-                            <p className='prodcutName'></p>
+                            <p className='prodcutName'>price: {price}$</p>
+                            <p className='prodcutName'>Description: {description}</p>
+                            <button onClick={()=>dispatch(addToCart(productDetails))}>Add to cart</button>
                         </div>
                     </div>
                 </Offcanvas.Body>

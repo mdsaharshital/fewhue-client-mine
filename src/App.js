@@ -4,6 +4,7 @@ import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import { useRef, useState } from "react";
 import Navigation from "./components/Navigation/Navigation";
 import Header from "./components/Header/Header";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   const containerRef = useRef(null);

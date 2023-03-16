@@ -5,3 +5,5 @@ export const photoConverter = (data) => {
   )}
     `;
 };
+
+// export default PhotoConverter;
