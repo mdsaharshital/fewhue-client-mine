@@ -3,7 +3,7 @@ import { Col, Offcanvas, Row } from 'react-bootstrap';
 import demoCap from '../assets/YT1.png'
 import ShopProductCard from '../components/ShopProductCard/ShopProductCard';
 
-const Shop = ({ showShop, handleShopClose }) => {
+const Shop = ({ showShop, handleShopClose, handleShowProductDetails }) => {
     const productDemoData = [
         {
             id: 1,
@@ -56,6 +56,8 @@ const Shop = ({ showShop, handleShopClose }) => {
             img: demoCap
         },
     ]
+
+    console.log(handleShowProductDetails)
     return (
         <Offcanvas className='px-2 shop_container' show={showShop} placement='bottom' scroll={false} backdrop={true} onHide={handleShopClose}>
             <Offcanvas.Header className='p-4' closeButton>
@@ -68,6 +70,8 @@ const Shop = ({ showShop, handleShopClose }) => {
                             key={product.id}
                             sm={12}
                             md={4}
+                            className="cursor_hover"
+                            onClick={handleShowProductDetails}
                         >
                             <ShopProductCard
                                 productPrice={product.price}
