@@ -237,3 +237,11 @@
 .checkout_btn:hover {
     background-color: var(--color-gallery-link-bg-hover);
 }
+/*  checkout -shital */
+.checkout_modal{
+width: 80vw !important;
+height: 100vh;
+border: none !important;
+border-radius: 0 0 0 10px;
+background-color: rgb(240, 235, 228) !important;
+}

@@ -10,6 +10,7 @@ function App() {
   const containerRef = useRef(null);
   const [showShop, setShowShop] = useState(false);
   const [showContact, setShowContact] = useState(false);
+  const [showCheckout, setShowCheckout] = useState(false);
   const [showProductDetails, setShowProductDetails] = useState(false);
 
   const handleShopClose = () => setShowShop(false);
@@ -18,10 +19,16 @@ function App() {
   const handleContactClose = () => setShowContact(false);
   const handleShowProductDetails = () => setShowProductDetails(true);
   const handleProductDetailsClose = () => setShowProductDetails(false);
+  const handleShowCheckout = () => setShowCheckout(true);
+  const handleShowCheckoutClose = () => setShowCheckout(false);
 
   return (
     <div className="App">
-      <Header />
+      <Header
+        showCheckout={showCheckout}
+        handleShowCheckout={handleShowCheckout}
+        handleShowCheckoutClose={handleShowCheckoutClose}
+      />
       <LocomotiveScrollProvider
         options={{
           smooth: true,

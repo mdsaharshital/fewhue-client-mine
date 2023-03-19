@@ -12,7 +12,7 @@ import takaIcon from "../../assets/taka.svg";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import CartSlide from './CartSlide';
 
-const Header = () => {
+const Header = ({handleShowCheckoutClose,handleShowCheckout,showCheckout}) => {
     const [showCart, setShowCart] = useState(false);
     const handleClose = () => setShowCart(false);
     const handleShow = () => setShowCart(true);
@@ -25,6 +25,17 @@ const Header = () => {
 
     return (
         <>
+        {/* order canvas */}
+        <Offcanvas className='checkout_modal' show={showCheckout} placement='end' scroll={true} onHide={handleShowCheckoutClose}>
+        <Offcanvas.Header closeButton>
+            <Offcanvas.Title>Order</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <div className="cart_total_container text-center mt-5">
+           <h1>order</h1>
+        </div>
+        </Offcanvas.Body>
+    </Offcanvas>
             <Offcanvas className='cart_container' show={showCart} placement='end' scroll={true} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Cart</Offcanvas.Title>
@@ -61,7 +72,7 @@ const Header = () => {
                         <span className="ms-1">{totalPrice}</span>
                     </p>
                     </div>
-                    <button className="checkout_btn">Proceed to checkout</button>
+                    <button className="checkout_btn" onClick={handleShowCheckout}>Proceed to checkout</button>
                 </div>
                 </Offcanvas.Body>
             </Offcanvas>
