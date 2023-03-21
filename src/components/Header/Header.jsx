@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import takaIcon from "../../assets/taka.svg";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import CartSlide from './CartSlide';
+import CheckOut from '../CheckOut/CheckOut';
 
 const Header = ({handleShowCheckoutClose,handleShowCheckout,showCheckout}) => {
     const [showCart, setShowCart] = useState(false);
@@ -25,23 +26,25 @@ const Header = ({handleShowCheckoutClose,handleShowCheckout,showCheckout}) => {
 
     return (
         <>
-        {/* order canvas */}
+        {/* checkout  canvas */}
         <Offcanvas className='checkout_modal' show={showCheckout} placement='end' scroll={true} onHide={handleShowCheckoutClose}>
-        <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Order</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-        <div className="cart_total_container text-center mt-5">
-           <h1>order</h1>
-        </div>
-        </Offcanvas.Body>
-    </Offcanvas>
+            <Offcanvas.Header closeButton>
+                <Offcanvas.Title>Checkout</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+                {/* checkout compo */}
+                <CheckOut/>
+            </Offcanvas.Body>
+         </Offcanvas>
             <Offcanvas className='cart_container' show={showCart} placement='end' scroll={true} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Cart</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                <Swiper
+                {
+                    cart.length >0 ? 
+                    <>
+                    <Swiper
                     modules={[EffectCoverflow, Pagination, Navigation]}
                     effect={"coverflow"}
                     grabCursor={true}
@@ -73,7 +76,9 @@ const Header = ({handleShowCheckoutClose,handleShowCheckout,showCheckout}) => {
                     </p>
                     </div>
                     <button className="checkout_btn" onClick={handleShowCheckout}>Proceed to checkout</button>
-                </div>
+                </div></>
+                    : <h1 className='empty_cart'>Your cart is empty.</h1>
+                }
                 </Offcanvas.Body>
             </Offcanvas>
             <div className='header_container fadeIn4'>
