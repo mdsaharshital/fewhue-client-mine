@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import Navigation from "./components/Navigation/Navigation";
 import Header from "./components/Header/Header";
 import ProductDetails from "./pages/ProductDetails";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const containerRef = useRef(null);
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <Toaster />
       <Header
         showCheckout={showCheckout}
         handleShowCheckout={handleShowCheckout}

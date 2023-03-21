@@ -8,7 +8,22 @@ export const productSlice = apiSlice.injectEndpoints({
     getProductPhoto: builder.query({
       query: (id) => `/product/product-photo/${id}`,
     }),
+    getAllOrders: builder.query({
+      query: (id) => `/get-allorders`,
+    }),
+    orderProduct: builder.mutation({
+      query: (data) => ({
+        url: `order/place-order`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllProductsQuery, useGetProductPhotoQuery } = productSlice;
+export const {
+  useGetAllProductsQuery,
+  useGetProductPhotoQuery,
+  useOrderProductMutation,
+  useGetAllOrdersQuery,
+} = productSlice;

@@ -68,7 +68,7 @@ export const basketSlice = createSlice({
     removeFromCart: (state, { payload }) => {
       state.cart = state.cart.filter((c) => c._id !== payload._id);
     },
-    emptyCart: (state, { payload }) => {
+    emptyCart: (state) => {
       state.cart = [];
     },
   },

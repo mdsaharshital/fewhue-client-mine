@@ -5,70 +5,96 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation } from "swiper";
 import './Checkout.css'
 import CartSlide from '../Header/CartSlide';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useOrderProductMutation } from '../../feature/product/productSlice';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+import { emptyCart } from '../../feature/basket/basketSlice';
 
-const CheckOut = () => {
-    
+const CheckOut = ({totalPrice}) => {
+    const dispatch = useDispatch()
+    const { register, handleSubmit, reset} = useForm();
     const { cart } = useSelector((auth) => auth.basket);
+    const [placeOrder,{isLoading,}]=useOrderProductMutation();
+
+     async function onSubmit ( formData){
+        const newData={
+            ...formData,
+            totalPrice,
+            products:cart
+        }
+        const {data}= await placeOrder(newData)
+        console.log('order',data);
+        if(data.success){
+            toast.success(`${data.message}`)
+            reset()
+            dispatch(emptyCart())
+        }else{
+            toast.error(`${data.message}`)
+
+        }
+    }
+
     return (
         <div className="mt-5">
            {/* form */}
-   <div className="form_checkout">
-        <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Full name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter full name eg:  Abul Hasan" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Address</Form.Label>
-                    <Form.Control type="text" placeholder="Address eg: 31/D, Dhanmondi, Dhaka" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Postal Code</Form.Label>
-                    <Form.Control type="text" placeholder="Postal Code eg: 1200" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                    <Button variant="primary" type="submit">Order</Button>
-        </Form>
-        <div className='swiper_checkout'>
-            <Swiper
-                    modules={[EffectCoverflow, Pagination, Navigation]}
-                    effect={"coverflow"}
-                    grabCursor={true}
-                    centeredSlides={true}
-                    slidesPerView={"auto"}
-                    coverflowEffect={{
-                    rotate: 0,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true,
-                    }}
-                    pagination={true}
-                    navigation
-                    className="mySwiper"
-                >
-                    {cart.map((product) => (
-                    <SwiperSlide productPrice={product.price} productImg={product.photo}>
-                        <CartSlide product={product} />
-                    </SwiperSlide>
-                    ))}
-            </Swiper>
-        </div>
-   </div>
+            <div className="form_checkout">
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" {...register("email",{ required: true})} placeholder="Enter email" />
+                            <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                            </Form.Text>
+                        </Form.Group>
+                        
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Full name</Form.Label>
+                            <Form.Control type="text" {...register("name" ,{ required: true})} placeholder="Enter full name" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Address</Form.Label>
+                            <Form.Control type="text" {...register("address" ,{ required: true})} placeholder="Eg: 31/D, Dhanmondi, Dhaka-1200" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Phone</Form.Label>
+                            <Form.Control type="text" {...register("phone" ,{ required: true})} placeholder="Phone eg: 01723XXXXXX" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Total Cost</Form.Label>
+                            <Form.Control type="text" disabled={true} value={totalPrice +' tk'} placeholder="" />
+                        </Form.Group>
+                        {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="Check me out" />
+                        </Form.Group> */}
+                            <Button variant="primary" disabled={isLoading} type="submit">Order</Button>
+                </Form>
+                <div className='swiper_checkout'>
+                    <Swiper
+                            modules={[EffectCoverflow, Pagination, Navigation]}
+                            effect={"coverflow"}
+                            grabCursor={true}
+                            centeredSlides={true}
+                            slidesPerView={"auto"}
+                            coverflowEffect={{
+                            rotate: 0,
+                            stretch: 0,
+                            depth: 100,
+                            modifier: 1,
+                            slideShadows: true,
+                            }}
+                            pagination={true}
+                            navigation
+                            className="mySwiper"
+                        >
+                            {cart.map((product) => (
+                            <SwiperSlide productPrice={product.price} productImg={product.photo}>
+                                <CartSlide product={product} />
+                            </SwiperSlide>
+                            ))}
+                    </Swiper>
+                </div>
+            </div>
            {/* <h1></h1> */}
         </div>
     );
