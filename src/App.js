@@ -1,11 +1,11 @@
 import "./App.css";
-import Page from "./pages/Page";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import { useRef, useState } from "react";
 import Navigation from "./components/Navigation/Navigation";
 import Header from "./components/Header/Header";
-import ProductDetails from "./pages/ProductDetails";
 import { Toaster } from "react-hot-toast";
+import ProductDetails from "./layout/pages/ProductDetails";
+import Page from "./layout/pages/Page";
 
 function App() {
   const containerRef = useRef(null);

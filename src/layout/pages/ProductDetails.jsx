@@ -1,9 +1,9 @@
 import React from 'react';
 import { Carousel, Offcanvas } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../feature/basket/basketSlice';
-import { useGetProductPhotoQuery } from '../feature/product/productSlice';
-import { photoConverter} from '../utils/photoConverter';
+import { addToCart } from '../../feature/basket/basketSlice';
+import { useGetProductPhotoQuery } from '../../feature/product/productSlice';
+import { photoConverter} from '../../utils/photoConverter';
 
 
 const ProductDetails = (props) => {

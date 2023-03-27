@@ -1,6 +1,6 @@
 import React from 'react';
 import { Offcanvas } from 'react-bootstrap';
-import SocialGroup from '../components/SocialGroup/SocialGroup';
+import SocialGroup from '../../components/SocialGroup/SocialGroup';
 
 const Contact = ({ showContact, handleContactClose }) => {
     return (

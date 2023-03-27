@@ -1,42 +1,20 @@
-
-import demoCap from '../assets/YT1.png'
-import ProductCard from '../components/ProductCard/ProductCard';
-import '../../src/App.css'
+// import demoCap from '../../assets/YT1.png'
+import ProductCard from '../../components/ProductCard/ProductCard';
+import '../../../src/App.css'
 import Shop from './Shop';
 import Contact from './Contact';
-import HighLightedTitle from '../components/HighLightedTitle/HighLightedTitle';
-import HighLightedTitle2 from '../components/HighLightedTitle2/HighLightedTitle2';
-import WhyFewhew from '../components/WhyFewheu/WhyFewhew';
-import SocialGroup from '../components/SocialGroup/SocialGroup';
-import { useGetAllProductsQuery } from '../feature/product/productSlice';
+import HighLightedTitle from '../../components/HighLightedTitle/HighLightedTitle';
+import HighLightedTitle2 from '../../components/HighLightedTitle2/HighLightedTitle2';
+import WhyFewhew from '../../components/WhyFewheu/WhyFewhew';
+import { useGetAllProductsQuery } from '../../feature/product/productSlice';
+import SocialGroup from '../../components/SocialGroup/SocialGroup';
 
 const catagoricsImg1 = 'https://images.pexels.com/photos/1460036/pexels-photo-1460036.jpeg?auto=compress&cs=tinysrgb&w=1600'
 const catagoricsImg2 = 'https://images.pexels.com/photos/1215445/pexels-photo-1215445.jpeg?auto=compress&cs=tinysrgb&w=1600'
 const catagoricsImg3 = 'https://images.pexels.com/photos/1296284/pexels-photo-1296284.jpeg?auto=compress&cs=tinysrgb&w=1600'
 const catagoricsImg4 = 'https://images.pexels.com/photos/209943/pexels-photo-209943.jpeg?auto=compress&cs=tinysrgb&w=1600'
 
-const productDemoData = [
-    {
-        id: 1,
-        price: 450,
-        img: demoCap
-    },
-    {
-        id: 2,
-        price: 450,
-        img: demoCap
-    },
-    {
-        id: 3,
-        price: 450,
-        img: demoCap
-    },
-    {
-        id: 4,
-        price: 450,
-        img: demoCap
-    }
-]
+
 
 const Page = (props) => {
     const { showShop,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Offcanvas, Row } from 'react-bootstrap';
-import ShopProductCard from '../components/ShopProductCard/ShopProductCard';
-import { useGetAllProductsQuery } from '../feature/product/productSlice';
+import ShopProductCard from '../../components/ShopProductCard/ShopProductCard';
+import { useGetAllProductsQuery } from '../../feature/product/productSlice';
 
 const Shop = ({ showShop, handleShopClose,handleShowProductDetails,data }) => {
     
