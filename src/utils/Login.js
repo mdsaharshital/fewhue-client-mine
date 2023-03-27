@@ -1,25 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import "./utils.css";
+import { useDispatch, useSelector } from "react-redux";
+import { loginAdmin } from "../feature/auth/authSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  // Marazulislam021@gmail.com
+  // Farhana@@@@88191
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+  //
+  const onSubmit = async (data) => {
     console.log("da", data);
+    dispatch(loginAdmin(data));
+    navigate("/dashboard");
+    if (token) {
+    }
   };
+  //
+  // useEffect(() => {
+  // navigate("/dashboard");
+  // console.log("to", token);
+  // }, [token, navigate]);
+  //
   return (
-    <div>
-      <div className="full-form w-full md:w-1/2 p-4 mx-auto my-10">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="relative z-0 w-full mb-6 group">
-            <input
+    <div className="main-login-div">
+      <div className="login-div">
+        <Form onSubmit={handleSubmit(onSubmit)} className="form-div">
+          {/* <Link to="/dashboard">dashboard</Link> */}
+          <Form.Group className="mb-3 w-full" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
               type="email"
-              name="email"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent  border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
+              size="lg"
+              placeholder="Enter email"
               {...register("email", {
                 required: {
                   value: true,
@@ -31,30 +53,27 @@ const Login = () => {
                 },
               })}
             />
-            <label
-              htmlFor="floating_email"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Email address
-            </label>
             {errors.email?.type === "required" && (
-              <span className="label-text-alt text-red-500">
+              <span className="label-text-alt text-danger">
                 {errors.email.message}
               </span>
             )}
             {errors.email?.type === "pattern" && (
-              <span className="label-text-alt text-red-500">
+              <span className="label-text-alt text-danger">
                 {errors.email.message}
               </span>
             )}
-          </div>
-          <div className="relative z-0 w-full mb-6 group">
-            <input
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3 w-full" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
               type="password"
-              name="password"
-              id="floating_password"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent  border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
+              size="lg"
+              placeholder="Password"
               {...register("password", {
                 required: {
                   value: true,
@@ -66,57 +85,19 @@ const Login = () => {
                 },
               })}
             />
-            <label
-              htmlFor="floating_password"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Password
-            </label>
             {errors.password?.type === "required" && (
-              <span className="label-text-alt text-red-500">
+              <span className="label-text-alt text-danger">
                 {errors.password.message}
               </span>
             )}
             {errors.password?.type === "minLength" && (
-              <span className="label-text-alt text-red-500">
-                {errors.password.message}
-              </span>
+              <span className="text-danger">{errors.password.message}</span>
             )}
-          </div>
-          <button
-            type="submit"
-            className="btn btn-primary text-white rounded-none mb-3 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  text-sm w-full sm:w-auto px-5 py-2.5 text-center "
-          >
-            Log in
-          </button>
-          {/* <p>
-            <small>
-              New here?{" "}
-              <Link to="/signup" className="text-primary cursor-pointer">
-                {" "}
-                Sign Up now
-              </Link>
-            </small>
-          </p> */}
-          {/* <p>
-            <small>
-              Forgot password?{" "}
-              <span
-                onClick={handlePassReset}
-                className="text-primary cursor-pointer"
-              >
-                {" "}
-                Click here
-              </span>
-            </small>
-          </p> */}
-          {/* {error && (
-            <p>
-              <small className="text-red-500">{error?.message}</small>
-            </p>
-          )} */}
-        </form>
-        {/* <SocialLogin /> */}
+          </Form.Group>
+          <Button variant="primary" type="submit" size="lg">
+            Submit
+          </Button>
+        </Form>
       </div>
     </div>
   );
