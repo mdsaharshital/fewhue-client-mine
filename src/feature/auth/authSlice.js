@@ -63,11 +63,14 @@ export const authSice = createSlice({
         state.token = "";
       })
       .addCase(loginAdmin.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-        state.token = payload.token;
+        if (payload.success) {
+          state.user = payload.user;
+          state.token = payload.token;
+        } else {
+          state.isError = true;
+          state.error = payload.message;
+        }
         state.isLoading = false;
-        state.isError = false;
-        state.error = "";
         //  set to localhost
         localStorage.setItem("token", payload.token);
       })
@@ -86,11 +89,13 @@ export const authSice = createSlice({
         state.token = "";
       })
       .addCase(getLoggedInUserDB.fulfilled, (state, { payload }) => {
-        state.user = payload?.user;
-        state.token = localStorage.getItem("token");
+        if (payload) {
+          state.user = payload?.user;
+          state.token = localStorage.getItem("token");
+          state.isError = false;
+          state.error = "";
+        }
         state.isLoading = false;
-        state.isError = false;
-        state.error = "";
       })
       .addCase(getLoggedInUserDB.rejected, (state, action) => {
         state.user = { email: "", role: "" };

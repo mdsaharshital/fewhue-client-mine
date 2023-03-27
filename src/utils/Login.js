@@ -5,10 +5,11 @@ import "./utils.css";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAdmin } from "../feature/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { token } = useSelector((state) => state.auth);
+  const { token, isError, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   // Marazulislam021@gmail.com
   // Farhana@@@@88191
@@ -19,17 +20,17 @@ const Login = () => {
   } = useForm();
   //
   const onSubmit = async (data) => {
-    console.log("da", data);
     dispatch(loginAdmin(data));
-    navigate("/dashboard");
-    if (token) {
-    }
   };
   //
-  // useEffect(() => {
-  // navigate("/dashboard");
-  // console.log("to", token);
-  // }, [token, navigate]);
+  useEffect(() => {
+    if (isError) {
+      toast.error(error);
+    }
+    if (token) {
+      navigate("/dashboard");
+    }
+  }, [token, navigate, isError, error]);
   //
   return (
     <div className="main-login-div">
