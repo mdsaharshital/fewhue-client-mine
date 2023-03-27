@@ -1,19 +1,24 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import AddProduct from "../Dashboard/AddProduct";
-import Dashboard from "../Dashboard/Dashboard";
+import AddProduct from "../layout/Dashboard/AddProduct";
+import Dashboard from "../layout/Dashboard/Dashboard";
+import PrivateRoute from "../utils/PrivateRoutes";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
   },
+  // {
+  //   path: "/login",
+  //   element: <App />,
+  // },
   {
     path: "/dashboard",
     element: (
-      //   <PrivateRoute>
-      <Dashboard />
-      //   </PrivateRoute>
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
     ),
     children: [
       {
