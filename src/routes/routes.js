@@ -4,6 +4,8 @@ import AddProduct from "../layout/Dashboard/AddProduct";
 import Dashboard from "../layout/Dashboard/Dashboard";
 import PrivateRoute from "../utils/PrivateRoutes";
 import Login from "./../utils/Login";
+import ManageProduct from './../layout/Dashboard/ManageProduct';
+import ManageOrders from './../layout/Dashboard/ManageOrders';
 
 const routes = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const routes = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "",
+        element: <ManageOrders />,
+      },
+      {
+        path: "manage-products",
+        element: <ManageProduct />,
+      },
       {
         path: "add-product",
         element: <AddProduct />,
