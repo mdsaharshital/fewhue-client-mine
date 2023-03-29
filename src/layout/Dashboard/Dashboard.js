@@ -14,7 +14,7 @@ const Dashboard = () => {
           LogOut
         </Link>
       </h5>
-      <Row>
+      <Row className="justify-content-center">
         <Col className="border">
           <ul>
             <li>
