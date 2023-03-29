@@ -7,7 +7,7 @@ import { loginAdmin } from "../feature/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
-const Login = () => {
+const AdminLogin = () => {
   const navigate = useNavigate();
   const { token, isError, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -104,4 +104,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;

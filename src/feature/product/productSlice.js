@@ -9,7 +9,14 @@ export const productSlice = apiSlice.injectEndpoints({
       query: (id) => `/product/product-photo/${id}`,
     }),
     getAllOrders: builder.query({
-      query: (id) => `/get-allorders`,
+      query: () => ({
+        url: `order/get-allorders`,
+        method: "GET",
+        headers: {
+          Authorization: localStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      }),
     }),
     orderProduct: builder.mutation({
       query: (data) => ({

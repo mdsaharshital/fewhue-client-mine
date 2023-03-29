@@ -2,10 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import AddProduct from "../layout/Dashboard/AddProduct";
 import Dashboard from "../layout/Dashboard/Dashboard";
-import PrivateRoute from "../utils/PrivateRoutes";
-import Login from "./../utils/Login";
-import ManageProduct from './../layout/Dashboard/ManageProduct';
-import ManageOrders from './../layout/Dashboard/ManageOrders';
+import ManageProduct from "./../layout/Dashboard/ManageProduct";
+import ManageOrders from "./../layout/Dashboard/ManageOrders";
+import AdminRoute from "../utils/AdminRoute";
+import AdminLogin from "../utils/AdminLogin";
 
 const routes = createBrowserRouter([
   {
@@ -14,14 +14,14 @@ const routes = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: <AdminLogin />,
   },
   {
     path: "/dashboard",
     element: (
-      <PrivateRoute>
+      <AdminRoute>
         <Dashboard />
-      </PrivateRoute>
+      </AdminRoute>
     ),
     children: [
       {
