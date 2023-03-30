@@ -1,5 +1,5 @@
 import React from "react";
-import {  Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { useGetAllOrdersQuery } from "../../feature/product/productSlice";
 import { Link } from 'react-router-dom';
 
@@ -8,20 +8,20 @@ const ManageOrders = () => {
   console.log("order", data);
   return (
     <div>
-      <h3 className="text-center">Orders</h3>
+      <h3 className="text-center fs-1 fw-bold">Orders</h3>
       <Table responsive>
         <thead>
           <tr>
-            <th>#</th>
-            <th>Email</th>
-            <th>Total Price</th>
-            <th>Details</th>
-            <th>Status</th>
+            <th className="fs-3">#</th>
+            <th className="fs-3">Email</th>
+            <th className="fs-3">Total Price</th>
+            <th className="fs-3">Details</th>
+            <th className="fs-3">Status</th>
           </tr>
         </thead>
         <tbody>
           {data?.map((order, index) => (
-            <tr>
+            <tr key={index}>
               <td>{index + 1}</td>
               <td>{order.email}</td>
               <td>{order.totalPrice}</td>

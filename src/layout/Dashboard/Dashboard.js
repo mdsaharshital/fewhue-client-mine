@@ -14,8 +14,8 @@ const Dashboard = () => {
           LogOut
         </Link>
       </h5>
-      <Row className="justify-content-center">
-        <Col className="border">
+      <Row className="justify-content-center ">
+        <Col md={3} xs={12}>
           <ul>
             <li>
               <Link
@@ -43,11 +43,11 @@ const Dashboard = () => {
             </li>
           </ul>
         </Col>
-        <Col xs={9} className="border">
+        <Col md={9} xs={12} className="">
           <Outlet></Outlet>
         </Col>
       </Row>
-    </div>
+    </div >
   );
 };
 
