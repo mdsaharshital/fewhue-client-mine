@@ -3,6 +3,7 @@ import apiSlice from "../api/apiSlice";
 export const productSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllProducts: builder.query({
+      providesTags: ["addProducts", "deleteProducts"],
       query: () => `/product/get-product`,
     }),
     getProductPhoto: builder.query({
@@ -26,6 +27,7 @@ export const productSlice = apiSlice.injectEndpoints({
       }),
     }),
     addProduct: builder.mutation({
+      invalidatesTags: ["addProducts"],
       query: (product) => {
         const formData = new FormData();
         formData.append("name", product.name);
@@ -43,6 +45,17 @@ export const productSlice = apiSlice.injectEndpoints({
         };
       },
     }),
+    deleteProduct: builder.mutation({
+      invalidatesTags: ["deleteProducts"],
+      query: (id) => ({
+        url: `/product/delete-product/${id}`,
+        method: "DELETE",
+        headers: {
+          Authorization: localStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+      }),
+    }),
   }),
 });
 
@@ -52,4 +65,5 @@ export const {
   useOrderProductMutation,
   useGetAllOrdersQuery,
   useAddProductMutation,
+  useDeleteProductMutation,
 } = productSlice;
