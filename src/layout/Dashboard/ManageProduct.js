@@ -21,7 +21,7 @@ const ManageProduct = () => {
         </thead>
         <tbody>
           {data?.products?.map((product, index) => (
-            <tr>
+            <tr key={index}>
               <td className="fs-4">{index + 1}</td>
               <td className="fs-4">{product.name}</td>
               <td className="fs-4">{product.price}</td>

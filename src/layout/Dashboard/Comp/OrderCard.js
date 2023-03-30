@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import "./OrderCard.css";
 import { useGetProductPhotoQuery } from '../../../feature/product/productSlice';
 import { photoConverter } from './../../../utils/photoConverter';
 
@@ -8,14 +8,13 @@ const OrderCard = ({ cart }) => {
     const { data } = useGetProductPhotoQuery(cart._id);
 
     return (
-
         <div>
-            <div className='d-flex' style={{ width: '18rem' }}>
-                <img width={'100px'} variant="top" src={photoConverter(data)} />
-                <div>
-                    <p>{cart.name}</p>
-                    <p> Price: ${cart.price}</p>
-                    <p>Quantity: {cart.quantity}</p>
+            <div className="cardd">
+                <img width={"130px"} src={photoConverter(data)} alt="..." />
+                <div className="cardd-details">
+                    <h3>{cart.name}</h3>
+                    <h3> Price: ${cart.price}</h3>
+                    <h3>Quantity: {cart.quantity}</h3>
                 </div>
             </div>
         </div>
