@@ -1,6 +1,7 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import {  Table } from "react-bootstrap";
 import { useGetAllOrdersQuery } from "../../feature/product/productSlice";
+import { Link } from 'react-router-dom';
 
 const ManageOrders = () => {
   const { data } = useGetAllOrdersQuery();
@@ -24,7 +25,7 @@ const ManageOrders = () => {
               <td>{index + 1}</td>
               <td>{order.email}</td>
               <td>{order.totalPrice}</td>
-              <td>Details</td>
+              <td><Link to={`manage-order/${order._id}`} className="btn btn-sm btn-outline-dark">Details</Link></td>
               <td>{order.status}</td>
             </tr>
           ))}
