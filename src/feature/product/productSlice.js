@@ -25,6 +25,24 @@ export const productSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    addProduct: builder.mutation({
+      query: (product) => {
+        const formData = new FormData();
+        formData.append("name", product.name);
+        formData.append("description", product.description);
+        formData.append("price", product.price);
+        formData.append("category", product.category);
+        formData.append("photo", product.photo[0]);
+        return {
+          url: `product/create-product`,
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        };
+      },
+    }),
   }),
 });
 
@@ -33,4 +51,5 @@ export const {
   useGetProductPhotoQuery,
   useOrderProductMutation,
   useGetAllOrdersQuery,
+  useAddProductMutation,
 } = productSlice;

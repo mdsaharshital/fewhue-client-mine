@@ -25,6 +25,7 @@ const CheckOut = ({totalPrice}) => {
         }
         const {data}= await placeOrder(newData)
         console.log('order',data);
+        console.log('newdata',newData);
         if(data.success){
             toast.success(`${data.message}`)
             reset()
