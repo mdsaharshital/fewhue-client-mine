@@ -6,6 +6,8 @@ import ManageProduct from "./../layout/Dashboard/ManageProduct";
 import ManageOrders from "./../layout/Dashboard/ManageOrders";
 import AdminRoute from "../utils/AdminRoute";
 import AdminLogin from "../utils/AdminLogin";
+import OrderDetails from "../layout/Dashboard/OrderDetails";
+import ProductDetails from './../layout/Dashboard/ProductDetails';
 
 const routes = createBrowserRouter([
   {
@@ -29,8 +31,16 @@ const routes = createBrowserRouter([
         element: <ManageOrders />,
       },
       {
+        path: "manage-order/:id",
+        element: <OrderDetails />,
+      },
+      {
         path: "manage-products",
         element: <ManageProduct />,
+      },
+      {
+        path: "manage-products/product-details/:id",
+        element: <ProductDetails />,
       },
       {
         path: "add-product",
