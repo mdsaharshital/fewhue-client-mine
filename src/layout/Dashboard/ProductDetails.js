@@ -8,7 +8,7 @@ const ProductDetails = () => {
     return (
         <div>
             Product Details {id}
-            <Form>
+            <Form className='formm'>
                 <Form.Group className="mb-3" >
                     <Form.Label>Product Name</Form.Label>
                     <Form.Control type="text" placeholder="Enter Product Name" />
@@ -29,7 +29,7 @@ const ProductDetails = () => {
                     <Form.Label>Choose Image</Form.Label>
                     <Form.Control type="file" />
                 </Form.Group>
-                <Button variant="light" type="submit">
+                <Button className='px-5' variant="outline-dark" type="submit">
                     Update
                 </Button>
             </Form>
