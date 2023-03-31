@@ -19,6 +19,16 @@ export const productSlice = apiSlice.injectEndpoints({
         },
       }),
     }),
+    updateOrderStatus: builder.mutation({
+      query: ({ status, id }) => ({
+        url: `order/order-status/${id}`,
+        method: "PUT",
+        body: { status },
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      }),
+    }),
     orderProduct: builder.mutation({
       query: (data) => ({
         url: `order/place-order`,
@@ -86,4 +96,5 @@ export const {
   useAddProductMutation,
   useDeleteProductMutation,
   useUpdateProductMutation,
+  useUpdateOrderStatusMutation,
 } = productSlice;

@@ -9,11 +9,22 @@ const Dashboard = () => {
   return (
     <div className="container">
       <h2 className="text-center fw-bold pt-5">Dashboard</h2>
-      <h5 className="text-end">
-        <Link to="/" onClick={() => dispatch(signOutuser())}>
-          LogOut
-        </Link>
-      </h5>
+      <div className="d-flex justify-content-end">
+        <h5 className="m-2">
+          <Link to="/" className="text-black">
+            Home
+          </Link>
+        </h5>
+        <h5 className="m-2">
+          <Link
+            to="/"
+            className="text-black"
+            onClick={() => dispatch(signOutuser())}
+          >
+            LogOut
+          </Link>
+        </h5>
+      </div>
       <Row className="justify-content-center ">
         <Col md={3} xs={12}>
           <ul>
@@ -47,7 +58,7 @@ const Dashboard = () => {
           <Outlet></Outlet>
         </Col>
       </Row>
-    </div >
+    </div>
   );
 };
 
