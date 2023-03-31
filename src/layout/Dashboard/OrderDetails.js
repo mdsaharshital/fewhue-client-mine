@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetAllOrdersQuery } from "../../feature/product/productSlice";
-import { Table } from "react-bootstrap";
 import OrderCard from "./Comp/OrderCard";
+import "./OrderDetails.css";
 
 const OrderDetails = () => {
   const { id } = useParams();
@@ -25,10 +25,15 @@ const OrderDetails = () => {
       <p className="fs-2">
         <b>Total Price: </b> {order.totalPrice}
       </p>
+      <p className="fs-2">
+        <b>Ordered Items: </b>
+      </p>
 
-      {order?.products?.map((c, i) => (
-        <OrderCard key={i} cart={c}></OrderCard>
-      ))}
+      <div className="cardss">
+        {order?.products?.map((c, i) => (
+          <OrderCard key={i} cart={c}></OrderCard>
+        ))}
+      </div>
     </div>
   );
 };
