@@ -3,8 +3,6 @@ import { Col, Offcanvas, Row } from 'react-bootstrap';
 import ShopProductCard from '../../components/ShopProductCard/ShopProductCard';
 
 const Shop = ({ showShop, handleShopClose, handleShowProductDetails, data }) => {
-
-
     return (
         <Offcanvas className='px-2 shop_container' show={showShop} placement='bottom' scroll={false} backdrop={true} onHide={handleShopClose}>
             <Offcanvas.Header className='p-4' closeButton>
