@@ -125,7 +125,7 @@ const ProductDetails = (props) => {
                                 </svg>
                             </div>
                             <br />
-                            <button className='btn btn-outline-dark' onClick={() => dispatch(addToCart(productDetails))}>Add to cart</button>
+                            <button className='btn fs-5 btn-outline-dark' onClick={() => dispatch(addToCart(productDetails))}>Add to cart</button>
                         </div>
                     </div>
                 </Offcanvas.Body>
