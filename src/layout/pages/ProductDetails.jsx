@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import takaIcon from '../../assets/taka.svg'
 import { Carousel, Offcanvas } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../feature/basket/basketSlice';
+import { addToCart, decreaseCartProduct,  } from '../../feature/basket/basketSlice';
 import { useGetProductPhotoQuery } from '../../feature/product/productSlice';
 import { photoConverter } from '../../utils/photoConverter';
 
@@ -11,15 +11,12 @@ const ProductDetails = (props) => {
     const dispatch = useDispatch()
     const { showProductDetails, handleProductDetailsClose } = props;
     const { productDetails } = useSelector(auth => auth.basket);
+    const { cart } = useSelector((auth) => auth.basket);
+    const {quantity}= cart.find(c=> c._id === productDetails._id)|| {};
     const { _id, name, price, description } = productDetails || {};
     const { data } = useGetProductPhotoQuery(_id);
-
-    const [count, setCount] = useState(0);
-
-    const increment = () => setCount(count + 1);
-    const decrement = () => setCount(count - 1);
-
     console.log('hey', productDetails);
+
     const ProductDetailsDemoData = [
         {
             ProductImgDemodata: [
@@ -70,7 +67,7 @@ const ProductDetails = (props) => {
                             <hr />
                             <div className="quantity-control">
                                 <svg
-                                    onClick={decrement}
+                                     onClick={() => dispatch(decreaseCartProduct(productDetails))}
                                     className="minus"
                                     width="20"
                                     height="20"
@@ -92,9 +89,9 @@ const ProductDetails = (props) => {
                                         stroke-linejoin="round"
                                     />
                                 </svg>
-                                <input type="number" value={count} name="" id="" />
+                                <input type="number" value={quantity || 0} name="" id="" />
                                 <svg
-                                    onClick={increment}
+                                    onClick={() => dispatch(addToCart(productDetails))}
                                     className="plus"
                                     width="20"
                                     height="20"
