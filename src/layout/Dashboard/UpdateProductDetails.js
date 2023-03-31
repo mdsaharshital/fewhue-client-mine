@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 import { photoConverter } from "../../utils/photoConverter";
 import { toast } from "react-hot-toast";
+import './OrderDetails.css'
 
 const UpdateProductDetails = () => {
   const { id } = useParams();
@@ -61,7 +62,7 @@ const UpdateProductDetails = () => {
         </h2>
         <img src={photoConverter(picData)} className="w-25" alt="" />
       </div>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form className='formm my-5' onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3">
           <Form.Label>Product Name</Form.Label>
           <Form.Control

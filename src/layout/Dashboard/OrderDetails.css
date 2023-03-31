@@ -7,3 +7,33 @@
         flex-direction: column;
     }
 }
+
+.formm input {
+    border: 1px solid black;
+    background-color: #6f6f6f0d;
+}
+
+.formm input:focus {
+    background-color: transparent;
+}
+
+.formm select {
+    cursor: pointer;
+    border: 1px solid black;
+    background-color: transparent;
+}
+
+.formm option {
+    cursor: pointer;
+    border: 1px solid black;
+    background-color: transparent;
+}
+
+.formm textarea {
+    border: 1px solid black;
+    background-color: #6f6f6f0d;
+}
+
+.formm textarea:focus {
+    background-color: transparent;
+}

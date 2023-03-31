@@ -5,9 +5,10 @@ import { useForm } from "react-hook-form";
 import { useAddProductMutation } from "../../feature/product/productSlice";
 import { toast } from "react-hot-toast";
 import { useGetAllCategoryQuery } from "../../feature/category/categoryApi";
+import './OrderDetails.css'
 
 const AddProduct = () => {
-  const [addProduct, { isError, isLoading, error }] = useAddProductMutation();
+  const [addProduct, { isError, error }] = useAddProductMutation();
   const { data } = useGetAllCategoryQuery();
   console.log("data", data);
   const {
@@ -29,9 +30,9 @@ const AddProduct = () => {
   };
   return (
     <div>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form className="formm" onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3">
-          <Form.Label>Product Name</Form.Label>
+          <Form.Label className="fs-4">Product Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Product Name"
@@ -49,7 +50,7 @@ const AddProduct = () => {
           )}
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Product Price</Form.Label>
+          <Form.Label className="fs-4">Product Price</Form.Label>
           <Form.Control
             type="number"
             placeholder="Enter Product Price"
@@ -67,7 +68,7 @@ const AddProduct = () => {
           )}
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Catagory</Form.Label>
+          <Form.Label className="fs-4">Catagory</Form.Label>
           <Form.Select
             name="category"
             placeholder="Select a category"
@@ -92,10 +93,11 @@ const AddProduct = () => {
           )}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Description</Form.Label>
+          <Form.Label className="fs-4">Description</Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
+            cols={3}
             {...register("description", {
               required: {
                 value: true,
@@ -110,7 +112,7 @@ const AddProduct = () => {
           )}
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Choose Image</Form.Label>
+          <Form.Label className="fs-4">Choose Image</Form.Label>
           <Form.Control
             type="file"
             {...register("photo", {
@@ -127,7 +129,7 @@ const AddProduct = () => {
             </span>
           )}
         </Form.Group>
-        <Button variant="light" type="submit">
+        <Button className="fs-4" variant="outline-dark" type="submit">
           Add Product
         </Button>
       </Form>

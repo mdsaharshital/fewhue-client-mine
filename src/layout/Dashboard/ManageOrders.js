@@ -40,14 +40,14 @@ const ManageOrders = () => {
   return (
     <div>
       <h3 className="text-center fs-1 fw-bold">Orders</h3>
-      <Table responsive>
+      <Table striped borderless hover responsive>
         <thead>
           <tr>
-            <th className="fs-3">#</th>
-            <th className="fs-3">Email</th>
-            <th className="fs-3">Total Price</th>
-            <th className="fs-3">Details</th>
-            <th className="fs-3">Status</th>
+            <th className="fs-4">#</th>
+            <th className="fs-4">Email</th>
+            <th className="fs-4">Total Price</th>
+            <th className="fs-4">Details</th>
+            <th className="fs-4">Status</th>
           </tr>
         </thead>
         <tbody>
