@@ -60,6 +60,11 @@ const AddProduct = () => {
               },
             })}
           />
+          {errors.price?.type === "required" && (
+            <span className="label-text-alt text-danger">
+              {errors.price.message}
+            </span>
+          )}
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Catagory</Form.Label>
@@ -80,6 +85,11 @@ const AddProduct = () => {
               </option>
             ))}
           </Form.Select>
+          {errors.category?.type === "required" && (
+            <span className="label-text-alt text-danger">
+              {errors.category.message}
+            </span>
+          )}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Description</Form.Label>
@@ -93,6 +103,11 @@ const AddProduct = () => {
               },
             })}
           />
+          {errors.description?.type === "required" && (
+            <span className="label-text-alt text-danger">
+              {errors.description.message}
+            </span>
+          )}
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Choose Image</Form.Label>
@@ -106,6 +121,11 @@ const AddProduct = () => {
             })}
             accept="image/*"
           />
+          {errors.photo?.type === "required" && (
+            <span className="label-text-alt text-danger">
+              {errors.photo.message}
+            </span>
+          )}
         </Form.Group>
         <Button variant="light" type="submit">
           Add Product

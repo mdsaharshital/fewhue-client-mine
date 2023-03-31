@@ -10,10 +10,10 @@ import {
   useUpdateProductMutation,
 } from "../../feature/product/productSlice";
 import { useState } from "react";
-import { photoConverter } from "./../../utils/photoConverter";
+import { photoConverter } from "../../utils/photoConverter";
 import { toast } from "react-hot-toast";
 
-const ProductDetails = () => {
+const UpdateProductDetails = () => {
   const { id } = useParams();
   const { data: categoryData } = useGetAllCategoryQuery();
   const { data: picData } = useGetProductPhotoQuery(id);
@@ -92,6 +92,11 @@ const ProductDetails = () => {
               },
             })}
           />
+          {errors.price?.type === "required" && (
+            <span className="label-text-alt text-danger">
+              {errors.price.message}
+            </span>
+          )}
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Catagory</Form.Label>
@@ -117,6 +122,11 @@ const ProductDetails = () => {
               </option>
             ))}
           </Form.Select>
+          {errors.category?.type === "required" && (
+            <span className="label-text-alt text-danger">
+              {errors.category.message}
+            </span>
+          )}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Description</Form.Label>
@@ -130,6 +140,11 @@ const ProductDetails = () => {
               },
             })}
           />
+          {errors.description?.type === "required" && (
+            <span className="label-text-alt text-danger">
+              {errors.description.message}
+            </span>
+          )}
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Choose Image</Form.Label>
@@ -143,6 +158,11 @@ const ProductDetails = () => {
             })}
             accept="image/*"
           />
+          {errors.photo?.type === "required" && (
+            <span className="label-text-alt text-danger">
+              {errors.photo.message}
+            </span>
+          )}
         </Form.Group>
         <Button variant="light" type="submit">
           Update Product
@@ -152,4 +172,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default UpdateProductDetails;
