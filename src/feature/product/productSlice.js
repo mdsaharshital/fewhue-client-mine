@@ -10,6 +10,7 @@ export const productSlice = apiSlice.injectEndpoints({
       query: (id) => `/product/product-photo/${id}`,
     }),
     getAllOrders: builder.query({
+      providesTags: ["getAllOrders"],
       query: () => ({
         url: `order/get-allorders`,
         method: "GET",
@@ -20,6 +21,7 @@ export const productSlice = apiSlice.injectEndpoints({
       }),
     }),
     updateOrderStatus: builder.mutation({
+      invalidatesTags: ["getAllOrders"],
       query: ({ status, id }) => ({
         url: `order/order-status/${id}`,
         method: "PUT",

@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import { ListGroup, Table } from "react-bootstrap";
 import {
   useGetAllOrdersQuery,
   useUpdateOrderStatusMutation,
@@ -7,26 +7,29 @@ import {
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import "./Dashboard.css";
+import { useSelector } from "react-redux";
 
 const ManageOrders = () => {
+  const { data } = useGetAllOrdersQuery();
+  const [updateStatus] = useUpdateOrderStatusMutation();
+  const { user, isLoading } = useSelector((state) => state.auth);
+  //
   const getOrderStatusColor = (status) => {
     switch (status) {
       case "Not Processed":
-        return "text-danger"; // red color
+        return "text-secondary"; // grey color
       case "Processing":
-        return "text-warning"; // yellow color
+        return "text-primary"; // blue color
       case "Shipped":
         return "text-info"; // blue color
       case "Delivered":
         return "text-success"; // green color
       case "Cancelled":
-        return "text-secondary"; // gray color
+        return "text-danger"; // red color
       default:
         return "";
     }
   };
-  const { data } = useGetAllOrdersQuery();
-  const [updateStatus] = useUpdateOrderStatusMutation();
 
   const handleSelectStatus = async (value, id) => {
     const newData = { status: value, id };
@@ -36,9 +39,21 @@ const ManageOrders = () => {
       toast.success("Updated Successfully");
     }
   };
-
+  if (isLoading) {
+    return <p>Loading....</p>;
+  }
   return (
     <div>
+      <h3 className="text-center fs-1 fw-bold">Admin ID</h3>
+      <div className="w-100 w-md-50 mx-auto my-5  fs-5">
+        <ListGroup>
+          <ListGroup.Item variant="primary">Name {user.name}</ListGroup.Item>
+          <ListGroup.Item variant="secondary">
+            Email: {user.email}
+          </ListGroup.Item>
+          <ListGroup.Item variant="success">Phone: {user.phone}</ListGroup.Item>
+        </ListGroup>
+      </div>
       <h3 className="text-center fs-1 fw-bold">Orders</h3>
       <Table striped borderless hover responsive>
         <thead>
@@ -54,7 +69,7 @@ const ManageOrders = () => {
           {data?.map((order, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
-              <td className={getOrderStatusColor(order.status)}>
+              <td className={`${getOrderStatusColor(order.status)} fw-bold`}>
                 {order.email}
               </td>
               <td>{order.totalPrice}</td>

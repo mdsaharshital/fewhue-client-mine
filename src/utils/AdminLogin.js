@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import "./utils.css";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAdmin } from "../feature/auth/authSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 const AdminLogin = () => {
