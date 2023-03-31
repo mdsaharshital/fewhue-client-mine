@@ -65,7 +65,7 @@ const ProductDetails = (props) => {
                             <hr />
                             <p className='prodcutName fs-4'>Description: <br />{description}</p>
                             <hr />
-                            <div className="quantity-control">
+                            {quantity>0 &&<div className="quantity-control">
                                 <svg
                                     onClick={() => dispatch(decreaseCartProduct(productDetails))}
                                     className="minus"
@@ -89,7 +89,7 @@ const ProductDetails = (props) => {
                                         stroke-linejoin="round"
                                     />
                                 </svg>
-                                <input type="number" value={quantity || 0} name="" id="" />
+                                <input type="number" className='qtn' value={quantity || 0} name="" id="" />
                                 <svg
                                     onClick={() => dispatch(addToCart(productDetails))}
                                     className="plus"
@@ -120,7 +120,7 @@ const ProductDetails = (props) => {
                                         stroke-linejoin="round"
                                     />
                                 </svg>
-                            </div>
+                            </div>}
                             <br />
                             <button className='btn fs-5 btn-outline-dark' onClick={() => dispatch(addToCart(productDetails))}>Add to cart</button>
                         </div>

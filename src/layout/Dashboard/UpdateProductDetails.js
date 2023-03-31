@@ -1,38 +1,70 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useAddProductMutation } from "../../feature/product/productSlice";
-import { toast } from "react-hot-toast";
 import { useGetAllCategoryQuery } from "../../feature/category/categoryApi";
+import {
+  useGetAllProductsQuery,
+  useGetProductPhotoQuery,
+  useUpdateProductMutation,
+} from "../../feature/product/productSlice";
+import { useState } from "react";
+import { photoConverter } from "../../utils/photoConverter";
+import { toast } from "react-hot-toast";
 import './OrderDetails.css'
 
-const AddProduct = () => {
-  const [addProduct, { isError, error }] = useAddProductMutation();
-  const { data } = useGetAllCategoryQuery();
-  console.log("data", data);
+const UpdateProductDetails = () => {
+  const { id } = useParams();
+  const { data: categoryData } = useGetAllCategoryQuery();
+  const { data: picData } = useGetProductPhotoQuery(id);
+  const [selectedCategoryId, setSelectedCategoryId] = useState("");
+  const [updateProduct, { isError, error, isLoading }] =
+    useUpdateProductMutation();
+  const { data } = useGetAllProductsQuery();
+  const selectedProduct = data?.products?.find((product) => product._id === id);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm();
-  //
+  } = useForm({
+    mode: "onBlur",
+  });
   const onSubmit = async (formDa) => {
     console.log("addProduct", formDa.category);
-    const { data } = await addProduct(formDa);
+    const { data } = await updateProduct(formDa);
+    if (isLoading) {
+      toast.loading("Product updating...");
+    }
     console.log("da", data);
+
     if (data.success) {
-      toast.success("Product added successfully ");
+      toast.success("Product updated successfully ");
     }
     if (isError) {
       toast.error(error);
     }
   };
+  //
+  useEffect(() => {
+    if (selectedProduct) {
+      reset(selectedProduct);
+    }
+  }, [selectedProduct, reset]);
+
   return (
     <div>
-      <Form className="formm" onSubmit={handleSubmit(onSubmit)}>
+      <div className="d-flex justify-content-center align-items-center shadow m-4">
+        <h2>
+          Product Details (Current):
+          <h5>Name: {selectedProduct?.name}</h5>
+        </h2>
+        <img src={photoConverter(picData)} className="w-25" alt="" />
+      </div>
+      <Form className='formm my-5' onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3">
-          <Form.Label className="fs-4">Product Name</Form.Label>
+          <Form.Label>Product Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Product Name"
@@ -50,7 +82,7 @@ const AddProduct = () => {
           )}
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label className="fs-4">Product Price</Form.Label>
+          <Form.Label>Product Price</Form.Label>
           <Form.Control
             type="number"
             placeholder="Enter Product Price"
@@ -68,7 +100,7 @@ const AddProduct = () => {
           )}
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label className="fs-4">Catagory</Form.Label>
+          <Form.Label>Catagory</Form.Label>
           <Form.Select
             name="category"
             placeholder="Select a category"
@@ -79,8 +111,13 @@ const AddProduct = () => {
                 message: "category is Required",
               },
             })}
+            value={selectedCategoryId}
+            onChange={(e) => setSelectedCategoryId(e.target.value)}
           >
-            {data?.category?.map((c) => (
+            {/* <option key={selectedProduct._id} value={selectedProduct._id}>
+              {selectedProduct.name}
+            </option> */}
+            {categoryData?.category?.map((c) => (
               <option key={c._id} value={c._id}>
                 {c.name}
               </option>
@@ -93,11 +130,10 @@ const AddProduct = () => {
           )}
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label className="fs-4">Description</Form.Label>
+          <Form.Label>Description</Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
-            cols={3}
             {...register("description", {
               required: {
                 value: true,
@@ -112,7 +148,7 @@ const AddProduct = () => {
           )}
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label className="fs-4">Choose Image</Form.Label>
+          <Form.Label>Choose Image</Form.Label>
           <Form.Control
             type="file"
             {...register("photo", {
@@ -129,12 +165,12 @@ const AddProduct = () => {
             </span>
           )}
         </Form.Group>
-        <Button className="fs-4" variant="outline-dark" type="submit">
-          Add Product
+        <Button variant="light" type="submit">
+          Update Product
         </Button>
       </Form>
     </div>
   );
 };
 
-export default AddProduct;
+export default UpdateProductDetails;

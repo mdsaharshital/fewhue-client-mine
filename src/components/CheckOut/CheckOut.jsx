@@ -18,14 +18,19 @@ const CheckOut = ({totalPrice}) => {
     const [placeOrder,{isLoading,}]=useOrderProductMutation();
 
      async function onSubmit ( formData){
+        const timestamp = Date.now().toString();
+        const randomString = Math.random().toString(36).substring(2, 8);
+        const orderNumber= `${timestamp}-${randomString}`;
+        console.log('order', orderNumber);
         const newData={
             ...formData,
             totalPrice,
+            orderNumber,
             products:cart
         }
+        console.log('newdata',newData);
         const {data}= await placeOrder(newData)
         console.log('order',data);
-        console.log('newdata',newData);
         if(data.success){
             toast.success(`${data.message}`)
             reset()

@@ -45,6 +45,25 @@ export const productSlice = apiSlice.injectEndpoints({
         };
       },
     }),
+    updateProduct: builder.mutation({
+      query: (product) => {
+        const formData = new FormData();
+        formData.append("name", product.name);
+        formData.append("description", product.description);
+        formData.append("price", product.price);
+        formData.append("category", product.category);
+        formData.append("photo", product.photo[0]);
+        return {
+          url: `product/update-product/${product._id}`,
+          method: "PUT",
+          body: formData,
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        };
+      },
+      invalidatesTags: ["addProducts"],
+    }),
     deleteProduct: builder.mutation({
       invalidatesTags: ["deleteProducts"],
       query: (id) => ({
@@ -66,4 +85,5 @@ export const {
   useGetAllOrdersQuery,
   useAddProductMutation,
   useDeleteProductMutation,
+  useUpdateProductMutation,
 } = productSlice;

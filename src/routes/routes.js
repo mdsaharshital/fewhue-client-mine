@@ -7,7 +7,7 @@ import ManageOrders from "./../layout/Dashboard/ManageOrders";
 import AdminRoute from "../utils/AdminRoute";
 import AdminLogin from "../utils/AdminLogin";
 import OrderDetails from "../layout/Dashboard/OrderDetails";
-import ProductDetails from './../layout/Dashboard/ProductDetails';
+import ProductDetails from "../layout/Dashboard/UpdateProductDetails";
 
 const routes = createBrowserRouter([
   {
