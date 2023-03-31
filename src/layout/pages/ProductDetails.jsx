@@ -2,7 +2,7 @@ import React from 'react';
 import takaIcon from '../../assets/taka.svg'
 import { Carousel, Offcanvas } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, decreaseCartProduct,  } from '../../feature/basket/basketSlice';
+import { addToCart, decreaseCartProduct, } from '../../feature/basket/basketSlice';
 import { useGetProductPhotoQuery } from '../../feature/product/productSlice';
 import { photoConverter } from '../../utils/photoConverter';
 
@@ -12,7 +12,7 @@ const ProductDetails = (props) => {
     const { showProductDetails, handleProductDetailsClose } = props;
     const { productDetails } = useSelector(auth => auth.basket);
     const { cart } = useSelector((auth) => auth.basket);
-    const {quantity}= cart.find(c=> c._id === productDetails._id)|| {};
+    const { quantity } = cart.find(c => c._id === productDetails._id) || {};
     const { _id, name, price, description } = productDetails || {};
     const { data } = useGetProductPhotoQuery(_id);
     console.log('hey', productDetails);
@@ -37,8 +37,8 @@ const ProductDetails = (props) => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <div className="product_details_container">
-                        <div className='w-70 caro'>
-                            <Carousel className='w-100' variant="dark">
+                        <div className=''>
+                            <Carousel className='caro w-100' variant="dark">
 
                                 {
                                     ProductDetailsDemoData[0].ProductImgDemodata.map(p => <Carousel.Item
@@ -57,7 +57,7 @@ const ProductDetails = (props) => {
 
                             </Carousel>
                         </div>
-                        <div className="w-30 px-5 py-4">
+                        <div className="caro-details">
                             <h2 className='prodcutName fs-1 font-bold'>{name}</h2>
                             {/* use only basic style to complete here */}
                             <hr />
@@ -67,7 +67,7 @@ const ProductDetails = (props) => {
                             <hr />
                             {quantity>0 &&<div className="quantity-control">
                                 <svg
-                                     onClick={() => dispatch(decreaseCartProduct(productDetails))}
+                                    onClick={() => dispatch(decreaseCartProduct(productDetails))}
                                     className="minus"
                                     width="20"
                                     height="20"
