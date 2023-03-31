@@ -1,30 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
+import takaIcon from '../../assets/taka.svg'
 import { Carousel, Offcanvas } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../feature/basket/basketSlice';
 import { useGetProductPhotoQuery } from '../../feature/product/productSlice';
-import { photoConverter} from '../../utils/photoConverter';
+import { photoConverter } from '../../utils/photoConverter';
 
 
 const ProductDetails = (props) => {
-    const dispatch= useDispatch()
-    const { showProductDetails, handleProductDetailsClose } = props
-    const {productDetails}= useSelector(auth=> auth.basket)
-    const {_id, name,price, description, categoy,slug}= productDetails || {}
+    const dispatch = useDispatch()
+    const { showProductDetails, handleProductDetailsClose } = props;
+    const { productDetails } = useSelector(auth => auth.basket);
+    const { _id, name, price, description } = productDetails || {};
     const { data } = useGetProductPhotoQuery(_id);
 
-    console.log('hey',productDetails);
-        const ProductDetailsDemoData = [
-            {
-                ProductImgDemodata: [
-                    {
-                        id: 1,
-                        imgUrl: photoConverter(data)
-                    },
+    const [count, setCount] = useState(0);
 
-                ]
-            }
-        ]
+    const increment = () => setCount(count + 1);
+    const decrement = () => setCount(count - 1);
+
+    console.log('hey', productDetails);
+    const ProductDetailsDemoData = [
+        {
+            ProductImgDemodata: [
+                {
+                    id: 1,
+                    imgUrl: photoConverter(data)
+                },
+
+            ]
+        }
+    ]
     console.log(ProductDetailsDemoData[0].ProductImgDemodata)
     return (
         <div>
@@ -55,12 +61,71 @@ const ProductDetails = (props) => {
                             </Carousel>
                         </div>
                         <div className="w-30 px-5 py-4">
-                            <h2 className='prodcutName font-bold'>{name}</h2>
-                            {/* use only basic style to complete here  */}
-
-                            <p className='prodcutName'>price: {price}$</p>
-                            <p className='prodcutName'>Description: {description}</p>
-                            <button onClick={()=>dispatch(addToCart(productDetails))}>Add to cart</button>
+                            <h2 className='prodcutName fs-1 font-bold'>{name}</h2>
+                            {/* use only basic style to complete here */}
+                            <hr />
+                            <p className='prodcutName fs-3'><img className='' width="17px" height="17px" src={takaIcon} alt="" />{price}</p>
+                            <hr />
+                            <p className='prodcutName fs-4'>Description: <br />{description}</p>
+                            <hr />
+                            <div className="quantity-control">
+                                <svg
+                                    onClick={decrement}
+                                    className="minus"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 32 32"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-miterlimit="10"
+                                    />
+                                    <path
+                                        d="M11 16H21"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                <input type="number" value={count} name="" id="" />
+                                <svg
+                                    onClick={increment}
+                                    className="plus"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 32 32"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-miterlimit="10"
+                                    />
+                                    <path
+                                        d="M11 16H21"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M16 11V21"
+                                        stroke="black"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </div>
+                            <br />
+                            <button className='btn btn-outline-dark' onClick={() => dispatch(addToCart(productDetails))}>Add to cart</button>
                         </div>
                     </div>
                 </Offcanvas.Body>
