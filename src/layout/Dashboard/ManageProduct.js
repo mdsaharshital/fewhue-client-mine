@@ -6,6 +6,7 @@ import {
 } from "../../feature/product/productSlice";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import './OrderDetails.css'
 
 const ManageProduct = () => {
   const { data } = useGetAllProductsQuery();
@@ -25,7 +26,7 @@ const ManageProduct = () => {
   return (
     <div>
       <h2 className="text-center">Manage Products</h2>
-      <Table responsive>
+      <Table striped borderless hover responsive>
         <thead>
           <tr>
             <th className="fs-4">#</th>
@@ -45,12 +46,13 @@ const ManageProduct = () => {
               <td className="fs-4">
                 <Link
                   to={`product-details/${product._id}`}
-                  className="btn btn-outline-dark btn-sm"
+                  className="fs-6 mx-2 btn btn-outline-dark btn-sm"
                 >
                   Edit
-                </Link>{" "}
+                </Link>
                 <Button
-                  variant="danger"
+                  variant="outline-danger"
+                  className="fs-6"
                   onClick={() => handleDelete(product._id)}
                 >
                   Delete
