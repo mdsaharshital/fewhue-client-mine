@@ -7,6 +7,7 @@ export const productSlice = apiSlice.injectEndpoints({
       query: () => `/product/get-product`,
     }),
     getProductPhoto: builder.query({
+      providesTags: ["updateProducts"],
       query: (id) => `/product/product-photo/${id}`,
     }),
     getAllOrders: builder.query({
@@ -74,7 +75,7 @@ export const productSlice = apiSlice.injectEndpoints({
           },
         };
       },
-      invalidatesTags: ["addProducts"],
+      invalidatesTags: ["addProducts", "updateProducts"],
     }),
     deleteProduct: builder.mutation({
       invalidatesTags: ["deleteProducts"],

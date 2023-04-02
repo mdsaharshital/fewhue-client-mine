@@ -12,7 +12,7 @@ import {
 import { useState } from "react";
 import { photoConverter } from "../../utils/photoConverter";
 import { toast } from "react-hot-toast";
-import './OrderDetails.css'
+import "./OrderDetails.css";
 
 const UpdateProductDetails = () => {
   const { id } = useParams();
@@ -32,7 +32,7 @@ const UpdateProductDetails = () => {
     mode: "onBlur",
   });
   const onSubmit = async (formDa) => {
-    console.log("addProduct", formDa.category);
+    console.log("addProduct", formDa.photo[0]);
     const { data } = await updateProduct(formDa);
     if (isLoading) {
       toast.loading("Product updating...");
@@ -62,7 +62,7 @@ const UpdateProductDetails = () => {
         </h2>
         <img src={photoConverter(picData)} className="w-25" alt="" />
       </div>
-      <Form className='formm my-5' onSubmit={handleSubmit(onSubmit)}>
+      <Form className="formm my-5" onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3">
           <Form.Label>Product Name</Form.Label>
           <Form.Control
@@ -114,9 +114,6 @@ const UpdateProductDetails = () => {
             value={selectedCategoryId}
             onChange={(e) => setSelectedCategoryId(e.target.value)}
           >
-            {/* <option key={selectedProduct._id} value={selectedProduct._id}>
-              {selectedProduct.name}
-            </option> */}
             {categoryData?.category?.map((c) => (
               <option key={c._id} value={c._id}>
                 {c.name}
