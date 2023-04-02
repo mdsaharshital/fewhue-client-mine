@@ -28,7 +28,9 @@ const Page = (props) => {
     const { data } = useGetAllProductsQuery();
     return (
         <>
+        {/* SHOP */}
             <Shop showShop={showShop} data={data} handleShopClose={handleShopClose} handleShowProductDetails={handleShowProductDetails} />
+        {/* CONTACT */}
             <Contact showContact={showContact} handleContactClose={handleContactClose} />
             <main data-scroll-section>
                 <div className="content">

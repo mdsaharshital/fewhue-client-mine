@@ -16,22 +16,45 @@ function App() {
   const [showCheckout, setShowCheckout] = useState(false);
   const [showProductDetails, setShowProductDetails] = useState(false);
 
-  const handleShopClose = () => setShowShop(false);
-  const handleShopShow = () => setShowShop(true);
-  const handleContactShow = () => setShowContact(true);
-  const handleContactClose = () => setShowContact(false);
-  const handleShowProductDetails = () => setShowProductDetails(true);
-  const handleProductDetailsClose = () => setShowProductDetails(false);
-  const handleShowCheckout = () => setShowCheckout(true);
-  const handleShowCheckoutClose = () => setShowCheckout(false);
+  const handleCloseModal = (modalName) => {
+    switch (modalName) {
+      case "shop":
+        setShowShop(false);
+        break;
+      case "contact":
+        setShowContact(false);
+        break;
+      case "productDetails":
+        setShowProductDetails(false);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleShowModal = (modalName) => {
+    switch (modalName) {
+      case "shop":
+        setShowShop(true);
+        break;
+      case "contact":
+        setShowContact(true);
+        break;
+      case "productDetails":
+        setShowProductDetails(true);
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="App">
       <Toaster />
       <Header
         showCheckout={showCheckout}
-        handleShowCheckout={handleShowCheckout}
-        handleShowCheckoutClose={handleShowCheckoutClose}
+        handleShowCheckout={() => setShowCheckout(true)}
+        handleShowCheckoutClose={() => setShowCheckout(false)}
       />
       <LocomotiveScrollProvider
         options={{
@@ -44,26 +67,28 @@ function App() {
         <main data-scroll-container ref={containerRef}>
           <Page
             showShop={showShop}
+            handleShopClose={() => handleCloseModal("shop")}
+            handleShopShow={() => handleShowModal("shop")}
             showContact={showContact}
-            handleShopClose={handleShopClose}
-            handleShopShow={handleShopShow}
-            handleContactClose={handleContactClose}
+            handleContactClose={() => handleCloseModal("contact")}
+            handleContactShow={() => handleShowModal("contact")}
             showProductDetails={showProductDetails}
-            handleShowProductDetails={handleShowProductDetails}
-            handleProductDetailsClose={handleProductDetailsClose}
+            handleShowProductDetails={() => handleShowModal("productDetails")}
+            handleProductDetailsClose={() => handleCloseModal("productDetails")}
           />
         </main>
       </LocomotiveScrollProvider>
       <Navigation
         showShop={showShop}
-        handleShopClose={handleShopClose}
-        handleShopShow={handleShopShow}
-        handleContactShow={handleContactShow}
+        handleShopClose={() => handleCloseModal("shop")}
+        handleShopShow={() => handleShowModal("shop")}
+        showContact={showContact}
+        handleContactClose={() => handleCloseModal("contact")}
+        handleContactShow={() => handleShowModal("contact")}
       />
-
       <ProductDetails
         showProductDetails={showProductDetails}
-        handleProductDetailsClose={handleProductDetailsClose}
+        handleProductDetailsClose={() => handleCloseModal("productDetails")}
       />
     </div>
   );
