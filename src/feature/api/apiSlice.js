@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000",
+    baseUrl: "https://fewhue-server.onrender.com",
   }),
   tagTypes: ["addProducts", "deleteProducts"],
   endpoints: (builder) => ({

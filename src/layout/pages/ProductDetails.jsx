@@ -78,15 +78,15 @@ const ProductDetails = (props) => {
                                     <path
                                         d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z"
                                         stroke="black"
-                                        stroke-width="2"
-                                        stroke-miterlimit="10"
+                                        strokeWidth="2"
+                                        strokeMiterlimit="10"
                                     />
                                     <path
                                         d="M11 16H21"
                                         stroke="black"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
                                     />
                                 </svg>
                                 <input type="number" className='qtn' value={quantity || 0} name="" id="" />
@@ -102,22 +102,22 @@ const ProductDetails = (props) => {
                                     <path
                                         d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z"
                                         stroke="black"
-                                        stroke-width="2"
-                                        stroke-miterlimit="10"
+                                        strokeWidth="2"
+                                        strokeMiterlimit="10"
                                     />
                                     <path
                                         d="M11 16H21"
                                         stroke="black"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
                                     />
                                     <path
                                         d="M16 11V21"
                                         stroke="black"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
                                     />
                                 </svg>
                             </div>}

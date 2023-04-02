@@ -20,7 +20,7 @@ export const getLoggedInUserDB = createAsyncThunk(
     try {
       //
       const { data } = await axios.get(
-        "http://localhost:5000/auth/getLoggedInUser",
+        "https://fewhue-server.onrender.com/auth/getLoggedInUser",
         {
           headers: { Authorization: token },
         }
@@ -38,7 +38,7 @@ export const loginAdmin = createAsyncThunk(
   "auth/loginAdmin",
   async (ema_pass) => {
     const { data } = await axios
-      .post("http://localhost:5000/auth/login", ema_pass)
+      .post("https://fewhue-server.onrender.com/auth/login", ema_pass)
       .finally(() => {
         console.log("shhs");
       })

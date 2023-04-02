@@ -13,7 +13,7 @@ const AdminRoute = ({ children }) => {
 
   if ((!isLoading && !email) || role !== 1) {
     localStorage.removeItem("token");
-    return <Navigate to="/" state={{ path: pathname }} />;
+    return <Navigate to="/login" state={{ path: pathname }} />;
   }
 
   return children;

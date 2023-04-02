@@ -6,9 +6,11 @@ import Header from "./components/Header/Header";
 import { Toaster } from "react-hot-toast";
 import ProductDetails from "./layout/pages/ProductDetails";
 import Page from "./layout/pages/Page";
+import { useLocation } from "react-router-dom";
 
 function App() {
   const containerRef = useRef(null);
+  const location = useLocation();
   const [showShop, setShowShop] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const [showCheckout, setShowCheckout] = useState(false);
@@ -37,6 +39,7 @@ function App() {
           direction: "horizontal",
         }}
         containerRef={containerRef}
+        watch={[location]}
       >
         <main data-scroll-container ref={containerRef}>
           <Page
