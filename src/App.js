@@ -55,6 +55,9 @@ function App() {
         showCheckout={showCheckout}
         handleShowCheckout={() => setShowCheckout(true)}
         handleShowCheckoutClose={() => setShowCheckout(false)}
+        showShop={showShop}
+        handleShopClose={() => handleCloseModal("shop")}
+        handleShopShow={() => handleShowModal("shop")}
       />
       <LocomotiveScrollProvider
         options={{

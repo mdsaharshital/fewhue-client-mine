@@ -12,8 +12,9 @@ import takaIcon from "../../assets/taka.svg";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import CartSlide from './CartSlide';
 import CheckOut from '../CheckOut/CheckOut';
+import emptyCartImg from '../../assets/emptyCart.png'
 
-const Header = ({handleShowCheckoutClose,handleShowCheckout,showCheckout}) => {
+const Header = ({handleShowCheckoutClose,handleShowCheckout,showCheckout,  handleShopShow}) => {
     const [showCart, setShowCart] = useState(false);
     const handleClose = () => setShowCart(false);
     const handleShow = () => setShowCart(true);
@@ -77,7 +78,12 @@ const Header = ({handleShowCheckoutClose,handleShowCheckout,showCheckout}) => {
                     </div>
                     <button className="checkout_btn" onClick={handleShowCheckout}>Proceed to checkout</button>
                 </div></>
-                    : <h1 className='empty_cart'>Your cart is empty.</h1>
+                    : 
+                    <div className="empty-cart h-full">
+                        <img src={emptyCartImg} alt="" width={'250px'} />
+                        <h1 className='empty_cart_text'>Your cart is empty.</h1>
+                        <button onClick={handleShopShow} className='btn btn-dark btn-lg my-5 '>Shop Now</button>
+                    </div>
                 }
                 </Offcanvas.Body>
             </Offcanvas>

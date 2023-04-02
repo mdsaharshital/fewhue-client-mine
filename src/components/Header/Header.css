@@ -237,10 +237,27 @@
 .checkout_btn:hover {
     background-color: var(--color-gallery-link-bg-hover);
 }
-.empty_cart{
+
+.empty-cart{
+    /* height: 100%;
+    width: 100%; */
+    /* margin: auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.empty-cart > button{
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    
+    background-color: #e08e4b !important;
+}
+.empty_cart_text{
     height: 95%;
     text-align: center;
-    color: rgb(231, 12, 12);
+    color: rgb(102, 88, 150);
     display: flex;
     align-items: center;
     justify-content: center;
