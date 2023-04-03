@@ -1,12 +1,13 @@
 .shoppp-card {
     position: relative;
-    display: flex;
+    background-color: #ffffff3d;
+    /* display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: space-between; */
+    padding: 15px;
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.253);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .produc-img {
