@@ -56,10 +56,10 @@ const ManageOrders = () => {
           </ListGroup.Item>
         </ListGroup>
       </div>
-      <div>
+      <div className="my-5">
         <OrderStat orderData={data} />
       </div>
-      <h3 className="text-center fs-1 fw-bold">Orders</h3>
+      <h3 className="text-center fs-1 fw-bold my-5">Orders</h3>
       <Table striped borderless hover responsive>
         <thead>
           <tr>
