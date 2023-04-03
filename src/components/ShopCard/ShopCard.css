@@ -1,0 +1,36 @@
+.shoppp-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.253);
+    border-radius: 5px;
+}
+
+.produc-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.shoppp-card span {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.shop_product_price_boxx {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5px;
+}
+
+.produc-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

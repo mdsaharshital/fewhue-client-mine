@@ -20,10 +20,6 @@ const ShopProductCard = ({ product }) => {
                 <h5>{product.price}</h5>
             </div>
             <div className="shop_product_img">
-                {/* product-photo/:pid */}
-                {/* 
-            http://localhost:5000/product/product-photo/${productId}
-            */}
                 <img className='w-100 img-fluid'
                     src={photoConverter(data)}
                     alt="" />
@@ -33,6 +29,8 @@ const ShopProductCard = ({ product }) => {
                     <img src={caretRight} alt="" />
                 </div>
             </div>
+            {/* product-photo/:pid */}
+            {/* http://localhost:5000/product/product-photo/${productId} */}
         </div>
     );
 };
