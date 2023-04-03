@@ -19,3 +19,23 @@
     flex-direction: column;
     justify-content: center;
 }
+.order-card-stat{
+    width: 250px;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 25% 10%;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+    padding: 20px 15px;
+}
+.first-stat-card{
+    background-color: rgba(252, 116, 116, 0.7);
+}
+.second-stat-card{
+
+    background-color: rgba(96, 255, 202, 0.5);
+}
+.third-stat-card{
+
+    background-color: rgba(116, 106, 253, 0.5);
+}
