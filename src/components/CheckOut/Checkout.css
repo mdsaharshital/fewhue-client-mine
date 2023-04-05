@@ -1,12 +1,35 @@
-.form_checkout{
-    border: 2px solid orange;
-    border: 2px solid orange;
+.form_checkout {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 3rem 2rem;
 }
-.swiper_checkout{
-    border: 2px solid red;
 
+.swiper_checkout {}
+
+.form-input {
+    width: 30vw;
+}
+
+.form_checkout input {
+    border: 1px solid black;
+    background-color: #6f6f6f0d;
+    width: 100%;
+    height: 40px;
+    font-size: 17px;
+}
+
+.form_checkout input:focus {
+    background-color: transparent;
+}
+
+.form_checkout input:disabled {
+    background-color: rgba(128, 128, 128, 0.267);
+}
+
+
+@media screen and (max-width: 1000px) {
+    .form_checkout {
+        flex-direction: column-reverse;
+    }
 }
