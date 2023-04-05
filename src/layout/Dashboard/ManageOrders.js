@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import "./Dashboard.css";
 import { useSelector } from "react-redux";
+import OrderStat from "./Comp/OrderStat";
 
 const ManageOrders = () => {
   const { data } = useGetAllOrdersQuery();
@@ -45,16 +46,20 @@ const ManageOrders = () => {
   return (
     <div>
       <h3 className="text-center fs-1 fw-bold">Admin ID</h3>
-      <div className="w-100 w-md-50 mx-auto my-5  fs-5">
-        <ListGroup>
-          <ListGroup.Item variant="primary">Name {user.name}</ListGroup.Item>
-          <ListGroup.Item variant="secondary">
+      <div className="w-100 w-md-50 mx-auto my-5 ">
+        <ListGroup className="list-group-flush">
+          <ListGroup.Item className="py-2" variant="primary">
+            Name: {user.name}
+          </ListGroup.Item>
+          <ListGroup.Item className="py-2" variant="success">
             Email: {user.email}
           </ListGroup.Item>
-          <ListGroup.Item variant="success">Phone: {user.phone}</ListGroup.Item>
         </ListGroup>
       </div>
-      <h3 className="text-center fs-1 fw-bold">Orders</h3>
+      <div className="my-5">
+        <OrderStat orderData={data} />
+      </div>
+      <h3 className="text-center fs-1 fw-bold my-5">Orders</h3>
       <Table striped borderless hover responsive>
         <thead>
           <tr>
