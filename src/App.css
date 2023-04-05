@@ -392,7 +392,7 @@ input::-webkit-inner-spin-button {
   border-radius: 3px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .product_details_container {
     flex-direction: column;
   }
