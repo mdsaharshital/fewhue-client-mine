@@ -1,6 +1,6 @@
 .shoppp-card {
     position: relative;
-    background-color: #ffffff3d;
+    background-color: var(--color-bg) !important;
     /* display: flex;
     flex-direction: column;
     justify-content: space-between; */

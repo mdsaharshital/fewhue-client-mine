@@ -76,7 +76,7 @@ const ProductDetails = (props) => {
                 {price}
               </p>
               <hr />
-              <p className="prodcutName fs-4">
+              <p className="desc fs-4">
                 Description: <br />
                 {description}
               </p>
