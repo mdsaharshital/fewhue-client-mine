@@ -6,7 +6,7 @@
 }
 
 .swiper_checkout {
-    width: 60%;
+    width: 50%;
     height: 100%;
 }
 
@@ -19,7 +19,7 @@
     border: 1px solid black;
     background-color: #6f6f6f0d;
     width: 100%;
-
+    border-radius: 10px;
 }
 
 
@@ -51,8 +51,8 @@
 @media screen and (min-width: 1000px) {
     .form_checkout input {
 
-        height: 30px;
-        font-size: 14px;
+        height: 40px;
+        font-size: 18px;
     }
 
 }

@@ -74,7 +74,7 @@ const CheckOut = ({ totalPrice }) => {
                         </Form.Group> */}
                     <Button variant="outline-danger" disabled={isLoading} type="submit">Place Order</Button>
                 </Form>
-                <div className='swiper_checkout'>
+                {/* <div className='swiper_checkout'>
                     <Swiper
                         modules={[EffectCoverflow, Pagination, Navigation]}
                         effect={"coverflow"}
@@ -98,7 +98,7 @@ const CheckOut = ({ totalPrice }) => {
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                </div>
+                </div> */}
             </div>
             {/* <h1></h1> */}
         </div>

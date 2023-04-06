@@ -267,8 +267,8 @@
 
 /*  checkout -shital */
 .checkout_modal {
-    width: 80vw !important;
-    height: 100vh;
+    width: 40vw !important;
+    height: 90vh;
     border: none !important;
     border-radius: 0 0 0 10px;
     background-color: rgb(240, 235, 228) !important;
