@@ -72,7 +72,7 @@ const CheckOut = ({ totalPrice }) => {
                     {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group> */}
-                    <Button variant="outline-dark" disabled={isLoading} type="submit">Order</Button>
+                    <Button variant="outline-danger" disabled={isLoading} type="submit">Place Order</Button>
                 </Form>
                 <div className='swiper_checkout'>
                     <Swiper

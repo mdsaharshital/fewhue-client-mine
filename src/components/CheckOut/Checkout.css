@@ -5,19 +5,23 @@
     padding: 3rem 2rem;
 }
 
-.swiper_checkout {}
+.swiper_checkout {
+    width: 60%;
+    height: 100%;
+}
 
 .form-input {
-    width: 30vw;
+    width: 20vw;
+
 }
 
 .form_checkout input {
     border: 1px solid black;
     background-color: #6f6f6f0d;
     width: 100%;
-    height: 40px;
-    font-size: 17px;
+
 }
+
 
 .form_checkout input:focus {
     background-color: transparent;
@@ -32,4 +36,23 @@
     .form_checkout {
         flex-direction: column-reverse;
     }
+
+    .form-input {
+        width: 60vw;
+        margin-top: 100px;
+    }
+
+    .swiper_checkout {
+        width: 100%;
+
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .form_checkout input {
+
+        height: 30px;
+        font-size: 14px;
+    }
+
 }
