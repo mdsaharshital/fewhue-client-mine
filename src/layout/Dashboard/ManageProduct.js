@@ -6,7 +6,7 @@ import {
 } from "../../feature/product/productSlice";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import './OrderDetails.css'
+import "./OrderDetails.css";
 
 const ManageProduct = () => {
   const { data } = useGetAllProductsQuery();
@@ -18,8 +18,11 @@ const ManageProduct = () => {
     );
     console.log("id", id);
     if (confirmed) {
+      toast.dismiss();
+      toast.loading("Deleting product");
       deleteProduct(id).finally(() => {
-        toast.success("deleted successfully");
+        toast.dismiss();
+        toast.success("Deleted successfully");
       });
     }
   };

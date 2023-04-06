@@ -5,10 +5,10 @@ import { useForm } from "react-hook-form";
 import { useAddProductMutation } from "../../feature/product/productSlice";
 import { toast } from "react-hot-toast";
 import { useGetAllCategoryQuery } from "../../feature/category/categoryApi";
-import './OrderDetails.css'
+import "./OrderDetails.css";
 
 const AddProduct = () => {
-  const [addProduct, { isError, error }] = useAddProductMutation();
+  const [addProduct] = useAddProductMutation();
   const { data } = useGetAllCategoryQuery();
   console.log("data", data);
   const {
@@ -18,14 +18,17 @@ const AddProduct = () => {
   } = useForm();
   //
   const onSubmit = async (formDa) => {
-    console.log("addProduct", formDa.category);
-    const { data } = await addProduct(formDa);
-    console.log("da", data);
-    if (data.success) {
-      toast.success("Product added successfully ");
-    }
-    if (isError) {
-      toast.error(error);
+    try {
+      toast.dismiss(); // Dismiss the previous toast
+      toast.loading("Adding product"); // Show a loading message
+      const { data } = await addProduct(formDa);
+      if (data.success) {
+        toast.dismiss(); // Dismiss the loading toast
+        toast.success("Product added successfully");
+      }
+    } catch (e) {
+      toast.dismiss(); // Dismiss the loading toast
+      toast.error(e.message || "Failed to add product");
     }
   };
   return (

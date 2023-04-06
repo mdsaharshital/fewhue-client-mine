@@ -19,8 +19,7 @@ const UpdateProductDetails = () => {
   const { data: categoryData } = useGetAllCategoryQuery();
   const { data: picData } = useGetProductPhotoQuery(id);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
-  const [updateProduct, { isError, error, isLoading }] =
-    useUpdateProductMutation();
+  const [updateProduct] = useUpdateProductMutation();
   const { data } = useGetAllProductsQuery();
   const selectedProduct = data?.products?.find((product) => product._id === id);
   const {
@@ -32,20 +31,21 @@ const UpdateProductDetails = () => {
     mode: "onBlur",
   });
   const onSubmit = async (formDa) => {
-    console.log("addProduct", formDa.photo[0]);
-    const { data } = await updateProduct(formDa);
-    if (isLoading) {
-      toast.loading("Product updating...");
-    }
-    console.log("da", data);
-
-    if (data.success) {
-      toast.success("Product updated successfully ");
-    }
-    if (isError) {
-      toast.error(error);
+    try {
+      toast.dismiss(); // Dismiss the previous toast
+      toast.loading("updating product"); // Show a loading message
+      const { data } = await updateProduct(formDa);
+      console.log("data", data);
+      if (data.success) {
+        toast.dismiss(); // Dismiss the previous toast
+        toast.success("Product updated successfully ");
+      }
+    } catch (e) {
+      toast.dismiss(); // Dismiss the previous toast
+      toast.error("Failed to update product");
     }
   };
+
   //
   useEffect(() => {
     if (selectedProduct) {
@@ -59,6 +59,7 @@ const UpdateProductDetails = () => {
         <h2>
           Product Details (Current):
           <h5>Name: {selectedProduct?.name}</h5>
+          <h5>Category Name: {selectedProduct?.category.name}</h5>
         </h2>
         <img src={photoConverter(picData)} className="w-25" alt="" />
       </div>
@@ -100,7 +101,7 @@ const UpdateProductDetails = () => {
           )}
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Catagory</Form.Label>
+          <Form.Label>Category</Form.Label>
           <Form.Select
             name="category"
             placeholder="Select a category"
@@ -108,15 +109,16 @@ const UpdateProductDetails = () => {
             {...register("category", {
               required: {
                 value: true,
-                message: "category is Required",
+                message: "Category is Required",
               },
             })}
-            value={selectedCategoryId}
+            value={selectedCategoryId || selectedProduct?.category?.id}
             onChange={(e) => setSelectedCategoryId(e.target.value)}
           >
-            {categoryData?.category?.map((c) => (
-              <option key={c._id} value={c._id}>
-                {c.name}
+            {/* show all categories from categoryData */}
+            {categoryData?.category?.map((category) => (
+              <option key={category._id} value={category._id}>
+                {category.name}
               </option>
             ))}
           </Form.Select>
