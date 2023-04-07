@@ -31,10 +31,16 @@ const UpdateProductDetails = () => {
     mode: "onBlur",
   });
   const onSubmit = async (formDa) => {
+    console.log("ff", formDa.category);
+    console.log("sel", selectedProduct.category._id);
     try {
       toast.dismiss(); // Dismiss the previous toast
       toast.loading("updating product"); // Show a loading message
-      const { data } = await updateProduct(formDa);
+      const updateData = !formDa.category._id
+        ? formDa
+        : { ...formDa, category: selectedProduct.category._id };
+      console.log("updd", updateData);
+      const { data } = await updateProduct(updateData);
       console.log("data", data);
       if (data.success) {
         toast.dismiss(); // Dismiss the previous toast

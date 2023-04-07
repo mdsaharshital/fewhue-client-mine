@@ -20,7 +20,7 @@ export const getLoggedInUserDB = createAsyncThunk(
     try {
       //
       const { data } = await axios.get(
-        "https://fewhue-server.onrender.com/auth/getLoggedInUser",
+        "https://fewhue-server.vercel.app/api/auth/getLoggedInUser",
         {
           headers: { Authorization: token },
         }
@@ -38,7 +38,7 @@ export const loginAdmin = createAsyncThunk(
   "auth/loginAdmin",
   async (ema_pass) => {
     const { data } = await axios
-      .post("https://fewhue-server.onrender.com/auth/login", ema_pass)
+      .post("https://fewhue-server.vercel.app/api/auth/login", ema_pass)
       .finally(() => {
         console.log("shhs");
       })
