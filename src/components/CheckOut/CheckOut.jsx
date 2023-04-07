@@ -48,45 +48,45 @@ const CheckOut = ({ totalPrice }) => {
             {/* form */}
             <div className="form_checkout">
                 <Form className='form-input form_checkout_child' onSubmit={handleSubmit(onSubmit)}>
-                       <div className="input-flex-container">
-                                <Form.Group controlId="formBasicEmail" className='input-flex'>
-                                    <Form.Label>Email address</Form.Label>
-                                    <Form.Control className='mb-3 w-full' type="email" {...register("email", { required: true })} placeholder="Enter email" />
-                                </Form.Group>
+                    <div className="input-flex-container">
+                        <Form.Group controlId="formBasicEmail" className='input-flex'>
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control className='mb-3 w-full' type="email" {...register("email", { required: true })} placeholder="Enter email" />
+                        </Form.Group>
 
-                                <Form.Group controlId="formBasicName" className='input-flex'>
-                                    <Form.Label>Full name</Form.Label>
-                                    <Form.Control className='mb-3 w-full' type="text" {...register("name", { required: true })} placeholder="Enter full name" />
-                                </Form.Group>
-                       </div>
-                       <div className='input-flex-container'> 
-                            <div className='input-flex'>
-                                <Form.Group controlId="formBasicAddress">
-                                    <Form.Label>Address</Form.Label>
-                                    <Form.Control className='mb-3 ' type="text" {...register("address", { required: true })} placeholder="Eg: 31/D, Dhanmondi, Dhaka-1200" />
-                                </Form.Group>
-                                <Form.Group controlId="formBasicPhone" >
-                                    <Form.Label>Phone</Form.Label>
-                                    <Form.Control className='mb-3 ' type="text" {...register("phone", { required: true })} placeholder="Phone eg: 01723XXXXXX" />
-                                </Form.Group>
-                            </div>
+                        <Form.Group controlId="formBasicName" className='input-flex'>
+                            <Form.Label>Full name</Form.Label>
+                            <Form.Control className='mb-3 w-full' type="text" {...register("name", { required: true })} placeholder="Enter full name" />
+                        </Form.Group>
+                    </div>
+                    <div className='input-flex-container'>
+                        <div className='input-flex'>
+                            <Form.Group controlId="formBasicAddress">
+                                <Form.Label>Address</Form.Label>
+                                <Form.Control className='mb-3 ' type="text" {...register("address", { required: true })} placeholder="Eg: 31/D, Dhanmondi, Dhaka-1200" />
+                            </Form.Group>
+                            <Form.Group controlId="formBasicPhone" >
+                                <Form.Label>Phone</Form.Label>
+                                <Form.Control className='mb-3 ' type="text" {...register("phone", { required: true })} placeholder="Phone eg: 01723XXXXXX" />
+                            </Form.Group>
                         </div>
-                        <Button variant="primary" className='order-btn' type="submit" disabled={isLoading}>
-                            {isLoading ? 'Placing Order...' : 'Place Order'}
-                        </Button>
+                    </div>
+                    <Button variant="outline-dark" className='order-btn' type="submit" disabled={isLoading}>
+                        {isLoading ? 'Placing Order...' : 'Place Order'}
+                    </Button>
                 </Form>
                 <div className="input-flex mt-4 form_checkout_child">
-                        <ol class="list-group list-group-numbered">
-                           {cart.map((product)=>( <SubTotal product={product}/>))}
-                        </ol>
-                        <div className="list-group">
-                            <div  class="list-group-item d-flex justify-content-between align-items-start">
-                                <div class="ms-2 me-auto my-2">
-                                    <div class="fw-bold ">Total Price</div>
-                                </div>
-                                <span class="fw-bold">{totalPrice} Tk</span>
+                    <ol class="list-group list-group-numbered">
+                        {cart.map((product) => (<SubTotal product={product} />))}
+                    </ol>
+                    <div className="list-group">
+                        <div class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto my-2">
+                                <div class="fw-bold ">Total Price</div>
                             </div>
+                            <span class="fw-bold">{totalPrice} Tk</span>
                         </div>
+                    </div>
                 </div>
                 {/* <div className='swiper_checkout'>
                     <Swiper

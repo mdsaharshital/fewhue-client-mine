@@ -11,8 +11,8 @@
 }
 
 .highlighted_text {
-    font-family: moret, serif;
-    font-weight: 800;
+    /* font-family: moret, serif; */
+    font-weight: 400;
     /* font-style: italic; */
     align-self: center;
     transform: skew(-10deg, -10deg);

@@ -3,8 +3,8 @@
     line-height: 0.8;
     text-transform: uppercase;
     margin: 0 10vw 0 1vw;
-    font-family: moret, serif;
-    font-weight: 800;
+    /* font-family: moret, serif; */
+    font-weight: 400;
     transform: skew(-10deg, -10deg);
     align-self: center;
 }

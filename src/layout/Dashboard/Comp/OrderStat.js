@@ -19,7 +19,7 @@ const OrderStat = ({ orderData }) => {
       </div>
       <div className="order-card-stat third-stat-card">
         <h1>
-          {totalPriceSum / orderData?.length}{" "}
+          {Math.round(totalPriceSum / orderData?.length)}{" "}
           <span className="fs-5 fw-bold">Tk.</span>
         </h1>
         <h5 className="fw-bold opacity-50">Avg Sales</h5>

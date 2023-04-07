@@ -23,6 +23,9 @@ const OrderDetails = () => {
         <b>Phone: </b> {order.phone}
       </p>
       <p className="fs-2">
+        <b>Address: </b> {order.address}
+      </p>
+      <p className="fs-2">
         <b>Total Price: </b> {order.totalPrice}
       </p>
       <p className="fs-2">
