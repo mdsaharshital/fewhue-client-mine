@@ -35,7 +35,7 @@ const Header = ({ handleShowCheckoutClose, handleShowCheckout, showCheckout, han
                 <hr />
                 <Offcanvas.Body>
                     {/* checkout compo */}
-                    <CheckOut totalPrice={totalPrice} />
+                    <CheckOut totalPrice={totalPrice} handleShopShow={handleShopShow} handleShowCheckoutClose={handleShowCheckoutClose}/>
                 </Offcanvas.Body>
             </Offcanvas>
             <Offcanvas className='cart_container' show={showCart} placement='end' scroll={true} onHide={handleClose}>

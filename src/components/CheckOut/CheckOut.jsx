@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import congo_img from '../../assets/congo_order.png'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation } from "swiper";
 import './Checkout.css'
@@ -13,7 +14,7 @@ import { emptyCart } from '../../feature/basket/basketSlice';
 import { InputGroup } from 'react-bootstrap';
 import SubTotal from './SubTotal';
 
-const CheckOut = ({ totalPrice }) => {
+const CheckOut = ({ totalPrice,handleShopShow,handleShowCheckoutClose }) => {
     const [orderData,setOrderData]= useState([])
     const dispatch = useDispatch()
     const { register, handleSubmit, reset } = useForm();
@@ -45,18 +46,32 @@ const CheckOut = ({ totalPrice }) => {
         }
     }
 console.log('or',orderData);
+const handleContinueSHop=()=>{
+    handleShopShow();
+    handleShowCheckoutClose()
+    setOrderData([])
+}
     return (
-        <div className="mt-5"> 
+        <div className="checkout-container"> 
             {/* form */}
+            
             {
                 orderData.email ? <div className='congo-div'>
-                    {/* check console for every data - shital */}
-                    <h1 className='text-success'>Congratulations. Your order has been successfully placed</h1>
-                    <h1>Email: {orderData.email}</h1>
-                    <h1>TotalPrice: {orderData.totalPrice}</h1>
-                    <h1>order number : {orderData.orderNumber}</h1>
-                    <h1>Please note this order number</h1>
-                </div> :
+                {/* check console for every data - shital */}
+                <img src={congo_img} width={'200px'} alt="" />
+                    <h1 className='text-success fs-3 fw-bold me-4'>Congratulations. Your order has been successfully placed</h1>
+                <div className="d-flex my-4">
+                    <div className="">
+                        <h1 className='fs-5 me-3 '><span className="fw-bold">Email:</span> {orderData.email}</h1>
+                        {/* <h1 className='fs-5 me-3'>TotalPrice:{ orderData.totalPrice}</h1> */}
+                    </div>
+                    <div className="">
+                        <h1 className='fs-5 me-3'><span className="fw-bold">Order number :</span> <span className='text-decoration-underline'>{orderData.orderNumber}</span></h1>
+                    </div>
+                </div>
+                <h1 className='fs-5 me-3 fw-bold'>Please note this order number</h1>
+                <button className="btn btn-dark btn-md mt-4" onClick={handleContinueSHop}>Continue Shop</button>
+            </div> :
             <div className="form_checkout">
                 <Form className='form-input form_checkout_child' onSubmit={handleSubmit(onSubmit)}>
                     <div className="input-flex-container">
