@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,6 +14,7 @@ import { InputGroup } from 'react-bootstrap';
 import SubTotal from './SubTotal';
 
 const CheckOut = ({ totalPrice }) => {
+    const [orderData,setOrderData]= useState([])
     const dispatch = useDispatch()
     const { register, handleSubmit, reset } = useForm();
     const { cart } = useSelector((auth) => auth.basket);
@@ -37,15 +38,25 @@ const CheckOut = ({ totalPrice }) => {
             toast.success(`${data.message}`)
             reset()
             dispatch(emptyCart())
+            setOrderData(newData)
         } else {
+            setOrderData([])
             toast.error(`${data.message}`)
-
         }
     }
-
+console.log('or',orderData);
     return (
-        <div className="mt-5">
+        <div className="mt-5"> 
             {/* form */}
+            {
+                orderData.email ? <div className='congo-div'>
+                    {/* check console for every data - shital */}
+                    <h1 className='text-success'>Congratulations. Your order has been successfully placed</h1>
+                    <h1>Email: {orderData.email}</h1>
+                    <h1>TotalPrice: {orderData.totalPrice}</h1>
+                    <h1>order number : {orderData.orderNumber}</h1>
+                    <h1>Please note this order number</h1>
+                </div> :
             <div className="form_checkout">
                 <Form className='form-input form_checkout_child' onSubmit={handleSubmit(onSubmit)}>
                     <div className="input-flex-container">
@@ -80,8 +91,8 @@ const CheckOut = ({ totalPrice }) => {
                         {cart.map((product) => (<SubTotal product={product} />))}
                     </ol>
                     <div className="list-group">
-                        <div class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto my-2">
+                        <div class="list-group-item d-flex justify-content-between align-items-start fs-5">
+                            <div class="ms-3 me-auto my-2">
                                 <div class="fw-bold ">Total Price</div>
                             </div>
                             <span class="fw-bold">{totalPrice} Tk</span>
@@ -114,6 +125,7 @@ const CheckOut = ({ totalPrice }) => {
                     </Swiper>
                 </div> */}
             </div>
+            }
             {/* <h1></h1> */}
         </div>
     );

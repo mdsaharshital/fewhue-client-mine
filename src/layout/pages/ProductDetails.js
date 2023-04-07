@@ -9,6 +9,7 @@ import {
 import { useGetProductPhotoQuery } from "../../feature/product/productSlice";
 import { photoConverter } from "../../utils/photoConverter";
 import "./productDetails.css";
+import { toast } from "react-hot-toast";
 
 const ProductDetails = (props) => {
   const dispatch = useDispatch();
@@ -31,6 +32,10 @@ const ProductDetails = (props) => {
     },
   ];
   console.log(ProductDetailsDemoData[0].ProductImgDemodata);
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    toast.success("Added to cart");
+  };
   return (
     <div>
       <Offcanvas
@@ -116,7 +121,7 @@ const ProductDetails = (props) => {
                     id=""
                   />
                   <svg
-                    onClick={() => dispatch(addToCart(productDetails))}
+                    onClick={() => handleAddToCart(productDetails)}
                     className="plus"
                     width="20"
                     height="20"
@@ -151,7 +156,7 @@ const ProductDetails = (props) => {
 
               <button
                 className="btn fs-5 btn-dark "
-                onClick={() => dispatch(addToCart(productDetails))}
+                onClick={() => handleAddToCart(productDetails)}
               >
                 {/* <svg
                   className="s-svg"
