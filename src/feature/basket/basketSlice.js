@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  products: [],
+  filter: {
+    category: {
+      sortByTag: [],
+    },
+  },
   productDetails: {},
   cart: [],
   isLoading: false,
@@ -13,6 +17,29 @@ export const basketSlice = createSlice({
   initialState,
   name: "basket",
   reducers: {
+    categorySortByTag: (state, { payload }) => {
+      if (!state.filter.category.sortByTag.includes(payload)) {
+        return {
+          ...state,
+          filter: {
+            category: {
+              sortByTag: [...state.filter.category.sortByTag, payload],
+            },
+          },
+        };
+      } else {
+        return {
+          ...state,
+          filter: {
+            category: {
+              sortByTag: state.filter.category.sortByTag.filter(
+                (tag) => tag !== payload
+              ),
+            },
+          },
+        };
+      }
+    },
     setProductDetails: (state, { payload }) => {
       if (state.productDetails) {
         state.productDetails = {};
@@ -79,5 +106,6 @@ export const {
   removeFromCart,
   decreaseCartProduct,
   emptyCart,
+  categorySortByTag,
 } = basketSlice.actions;
 export default basketSlice.reducer;

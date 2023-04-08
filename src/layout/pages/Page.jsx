@@ -8,11 +8,12 @@ import HighLightedTitle2 from '../../components/HighLightedTitle2/HighLightedTit
 import WhyFewhew from '../../components/WhyFewheu/WhyFewhew';
 import { useGetAllProductsQuery } from '../../feature/product/productSlice';
 import SocialGroup from '../../components/SocialGroup/SocialGroup';
+import { useGetAllCategoryQuery } from '../../feature/category/categoryApi';
 
 const catagoricsImg1 = 'https://images.pexels.com/photos/1460036/pexels-photo-1460036.jpeg?auto=compress&cs=tinysrgb&w=1600'
 const catagoricsImg2 = 'https://images.pexels.com/photos/1215445/pexels-photo-1215445.jpeg?auto=compress&cs=tinysrgb&w=1600'
-const catagoricsImg3 = 'https://images.pexels.com/photos/1296284/pexels-photo-1296284.jpeg?auto=compress&cs=tinysrgb&w=1600'
-const catagoricsImg4 = 'https://images.pexels.com/photos/209943/pexels-photo-209943.jpeg?auto=compress&cs=tinysrgb&w=1600'
+// const catagoricsImg3 = 'https://images.pexels.com/photos/1296284/pexels-photo-1296284.jpeg?auto=compress&cs=tinysrgb&w=1600'
+// const catagoricsImg4 = 'https://images.pexels.com/photos/209943/pexels-photo-209943.jpeg?auto=compress&cs=tinysrgb&w=1600'
 
 
 
@@ -26,10 +27,16 @@ const Page = (props) => {
     } = props;
 
     const { data } = useGetAllProductsQuery();
+    const { data: catData } = useGetAllCategoryQuery();
+    const images = [catagoricsImg1, catagoricsImg2];
+
+const categoriesWithImages = catData?.category?.map((category, index) => {
+  return { ...category, img: images[index] };
+});
     return (
         <>
         {/* SHOP */}
-            <Shop showShop={showShop} data={data} handleShopClose={handleShopClose} handleShowProductDetails={handleShowProductDetails} />
+            <Shop showShop={showShop} category={catData} data={data} handleShopClose={handleShopClose} handleShowProductDetails={handleShowProductDetails} />
         {/* CONTACT */}
             <Contact showContact={showContact} handleContactClose={handleContactClose} />
             <main data-scroll-section>
@@ -55,62 +62,22 @@ const Page = (props) => {
                             </div>
                         </div>
                         <HighLightedTitle title1={'Available'} title2={'categories'} />
-                        <figure className="gallery__item">
+
+                        {
+                            categoriesWithImages?.map(category=> <figure className="gallery__item" onClick={handleShopShow}>
                             <div className="gallery__item-img">
                                 <div className="gallery__item-imginner skew">
-                                    <img className="w-100" src={catagoricsImg1} alt="" />
+                                    <img className="w-100" src={category.img} alt="" />
                                 </div>
                             </div>
                             <figcaption className="gallery__item-caption ">
-                                <h2 className="gallery__item-title " data-scroll data-scroll-speed="1">Lycanthropy</h2>
+                                <h2 className="gallery__item-title " data-scroll data-scroll-speed="1">{category.name}</h2>
                                 {/* <span className="gallery__item-number">05</span> */}
 
                                 {/* <a className="gallery__item-link">explore</a> */}
                             </figcaption>
-                        </figure>
-                        <figure className="gallery__item">
-                            <div className="gallery__item-img">
-                                <div className="gallery__item-imginner skew">
-                                    <img className='w-100' src={catagoricsImg2} alt="" />
-                                </div>
-                            </div>
-                            <figcaption className="gallery__item-caption ">
-                                <h2 className="gallery__item-title" data-scroll data-scroll-speed="1">Mudlark</h2>
-                                {/* <span className="gallery__item-number">06</span> */}
-
-                                {/* <a className="gallery__item-link">explore</a> */}
-                            </figcaption>
-                        </figure>
-                        <figure className="gallery__item">
-                            <div className="gallery__item-img">
-                                <div className="gallery__item-imginner skew">
-                                    <img className='w-100' src={catagoricsImg3} alt="" />
-                                </div>
-                            </div>
-                            <figcaption className="gallery__item-caption ">
-                                <h2 className="gallery__item-title" data-scroll data-scroll-speed="1">Illywhacker</h2>
-                                {/* <span className="gallery__item-number">07</span> */}
-                                <p className="gallery__item-tags">
-                                    {/* <span>#water</span> */}
-                                </p>
-                                {/* <a className="gallery__item-link">explore</a> */}
-                            </figcaption>
-                        </figure>
-                        <figure className="gallery__item">
-                            <div className="gallery__item-img">
-                                <div className="gallery__item-imginner skew">
-                                    <img className='w-100' src={catagoricsImg4} alt="" />
-                                </div>
-                            </div>
-                            <figcaption className="gallery__item-caption ">
-                                <h2 className="gallery__item-title" data-scroll data-scroll-speed="1">Disenthral</h2>
-                                {/* <span className="gallery__item-number">08</span> */}
-                                <p className="gallery__item-tags skew">
-                                    <span>#comming soon</span>
-                                </p>
-                                {/* <a className="gallery__item-link">explore</a> */}
-                            </figcaption>
-                        </figure>
+                        </figure>)
+                        }
                         <HighLightedTitle2 title1={'Latest'} title2={'Drops'} />
                         <div className="latest_products">
                             {

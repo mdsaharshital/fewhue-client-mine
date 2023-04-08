@@ -9,6 +9,19 @@ import {
 } from "../../feature/category/categoryApi";
 import UpdateCategoryModal from "./Comp/UpdateCategory";
 
+// {
+//   categoriesWithImages?.map(category=><figure className="gallery__item">
+//   <div className="gallery__item-img">
+//       <div className="gallery__item-imginner skew">
+//           <img className="w-100" src={category.img} alt="" />
+//       </div>
+//   </div>
+//   <figcaption className="gallery__item-caption ">
+//       <h2 className="gallery__item-title " data-scroll data-scroll-speed="1">{category.name}</h2>
+//   </figcaption>
+// </figure>)
+// }
+
 const ManageCategory = () => {
   const [getCategory, setGetCategory] = useState("");
   const [modalShow, setModalShow] = useState(false);
@@ -50,7 +63,7 @@ const ManageCategory = () => {
 
   return (
     <div>
-      <h2 className="text-center my-5">Manage Products</h2>
+      <h2 className="text-center my-5">Manage Categories</h2>
       <Table striped borderless hover responsive>
         <thead>
           <tr>

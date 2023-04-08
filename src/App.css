@@ -226,6 +226,7 @@ body {
     '... ...';
   grid-template-columns: 8rem 21vmax;
   grid-template-rows: 8rem 28vmax 3rem;
+  cursor: pointer;
 }
 
 .gallery__item:nth-child(even) {
@@ -283,7 +284,7 @@ body {
   font-weight: 800;
   /* font-style: italic; */
   align-self: center;
-  transform: skew(-10deg, -10deg);
+  /* transform: skew(-10deg, -10deg); */
 }
 
 .gallery__item-link {
