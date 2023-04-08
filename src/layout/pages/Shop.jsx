@@ -2,7 +2,7 @@ import React from 'react';
 import { Offcanvas } from 'react-bootstrap';
 import ShopCard from '../../components/ShopCard/ShopCard';
 import { useDispatch, useSelector } from 'react-redux';
-import { categorySortByTag } from '../../feature/basket/basketSlice';
+import { categorySortByTag, resetCategoryFilter } from '../../feature/basket/basketSlice';
 
 const Shop = ({ showShop, handleShopClose, handleShowProductDetails, data,category }) => {
     const dispatch=useDispatch()
@@ -11,7 +11,7 @@ const Shop = ({ showShop, handleShopClose, handleShowProductDetails, data,catego
     const {products}= data || []
     let filterProduct; 
     if (!products) {
-        return <div>Loading...</div>;
+        return <div></div>;
       }
     if(products.length){
         filterProduct=products?.map(product => <div
@@ -67,6 +67,7 @@ const Shop = ({ showShop, handleShopClose, handleShowProductDetails, data,catego
                     ${sortByTag.includes(cat.name) && 'btn btn-dark text-white'} btn-sm rounded-pill`}>{cat.name}</button>
                 ))
                }
+            <button onClick={()=>dispatch(resetCategoryFilter())} className={`btn btn-sm cursor-not-allowed bg-danger text-white px-4 py-1 rounded-pill ${sortByTag.length>0 && 'opacity-100'}`} disabled={!sortByTag.length>0 }>Reset</button>
             </div>
 
                 <div className='card-grid w-90 mx-auto'>

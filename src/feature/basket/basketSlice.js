@@ -40,6 +40,14 @@ export const basketSlice = createSlice({
         };
       }
     },
+    resetCategoryFilter: (state) => {
+      state.filter = {
+        ...state.filter,
+        category: {
+          sortByTag: [],
+        },
+      };
+    },
     setProductDetails: (state, { payload }) => {
       if (state.productDetails) {
         state.productDetails = {};
@@ -107,5 +115,6 @@ export const {
   decreaseCartProduct,
   emptyCart,
   categorySortByTag,
+  resetCategoryFilter,
 } = basketSlice.actions;
 export default basketSlice.reducer;
