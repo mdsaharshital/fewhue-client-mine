@@ -52,6 +52,14 @@ const Dashboard = () => {
                 Add New Item
               </Link>
             </li>
+            <li>
+              <Link
+                className="fs-5 btn btn-outline-dark d-block g-2 m-2"
+                to="/dashboard/manage-category"
+              >
+                Manage Category
+              </Link>
+            </li>
           </ul>
         </Col>
         <Col md={9} xs={12} className="">

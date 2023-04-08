@@ -8,6 +8,7 @@ import AdminRoute from "../utils/AdminRoute";
 import AdminLogin from "../utils/AdminLogin";
 import OrderDetails from "../layout/Dashboard/OrderDetails";
 import ProductDetails from "../layout/Dashboard/UpdateProductDetails";
+import ManageCategory from "../layout/Dashboard/ManageCategory";
 
 const routes = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const routes = createBrowserRouter([
       {
         path: "add-product",
         element: <AddProduct />,
+      },
+      {
+        path: "manage-category",
+        element: <ManageCategory />,
       },
     ],
   },
