@@ -9,6 +9,8 @@ import WhyFewhew from '../../components/WhyFewheu/WhyFewhew';
 import { useGetAllProductsQuery } from '../../feature/product/productSlice';
 import SocialGroup from '../../components/SocialGroup/SocialGroup';
 import { useGetAllCategoryQuery } from '../../feature/category/categoryApi';
+import { categorySortByTag } from '../../feature/basket/basketSlice';
+import { useDispatch } from 'react-redux';
 
 const catagoricsImg1 = 'https://images.pexels.com/photos/1460036/pexels-photo-1460036.jpeg?auto=compress&cs=tinysrgb&w=1600'
 const catagoricsImg2 = 'https://images.pexels.com/photos/1215445/pexels-photo-1215445.jpeg?auto=compress&cs=tinysrgb&w=1600'
@@ -25,7 +27,7 @@ const Page = (props) => {
         handleContactClose,
         handleShowProductDetails,
     } = props;
-
+    const dispatch=useDispatch()
     const { data } = useGetAllProductsQuery();
     const { data: catData } = useGetAllCategoryQuery();
     const images = [catagoricsImg1, catagoricsImg2];
@@ -64,7 +66,10 @@ const categoriesWithImages = catData?.category?.map((category, index) => {
                         <HighLightedTitle title1={'Available'} title2={'categories'} />
 
                         {
-                            categoriesWithImages?.map(category=> <figure className="gallery__item" onClick={handleShopShow}>
+                            categoriesWithImages?.map(category=> <figure className="gallery__item" 
+                            onClick={()=>{
+                                dispatch(categorySortByTag(category.name))
+                                handleShopShow()}}>
                             <div className="gallery__item-img">
                                 <div className="gallery__item-imginner skew">
                                     <img className="w-100" src={category.img} alt="" />
