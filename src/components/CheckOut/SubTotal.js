@@ -11,7 +11,7 @@ const SubTotal = ({ product }) => {
     >
       <div class="ms-3 me-auto d-flex justify-content-center align-items-center w-full">
         <div className="me-3">
-          <img src={photoConverter(data)} width={"100px"} alt="" />
+          <img src={photoConverter(data)} width={"50px"} alt="" />
         </div>
         <div className="ms-2 w-full">
           <div class="fw-bold fs-5">{product.name}</div>
