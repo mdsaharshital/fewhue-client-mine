@@ -22,19 +22,19 @@ const Navigation = ({ handleShopShow, handleContactShow }) => {
                             <nav>
                                 <ul>
                                     <li>
-                                        <a className="link link--ersa">
+                                        <span className="link link--ersa">
                                             <span onClick={handleShopShow}>Shop</span>
-                                        </a>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a className="link link--ersa">
+                                        <span className="link link--ersa">
                                             <span>About Us</span>
-                                        </a>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a className="link link--ersa">
+                                        <span className="link link--ersa">
                                             <span onClick={handleContactShow}>Contact Us</span>
-                                        </a>
+                                        </span>
                                     </li>
                                 </ul>
                             </nav>
@@ -48,7 +48,7 @@ const Navigation = ({ handleShopShow, handleContactShow }) => {
                             </div>
                             <div className=''><a href="#">Return & polices</a></div>
                             <div className='py-1'><a href="#">Terms & Conditions</a></div>
-                            <p>©2023-Fewhew. All Rights Reserved.</p>
+                            <p className='rights_eserved_text'>©2023-Fewhew. All Rights Reserved.</p>
                         </div>
                     </div>
                 </Offcanvas.Body>

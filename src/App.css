@@ -182,7 +182,11 @@ body {
     stroke-dashoffset: 0;
   }
 }
-
+@media screen and (max-width: 610px) {
+  .cap {
+    width: 100%;
+  }
+}
 .fadeIn1 {
   animation: fade1 2s forwards;
   animation-delay: 3s;

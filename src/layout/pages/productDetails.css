@@ -66,4 +66,6 @@ body:after {
 
 .desc {
     width: 100%;
+    word-wrap: break-word;
+    /* text-overflow: ; */
 }

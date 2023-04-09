@@ -283,7 +283,7 @@
 
 @media screen and (max-width: 800px) {
     .cart_container {
-        width: 80vw !important;
+        width: 95vw !important;
     }
 }
 
@@ -343,6 +343,7 @@
 
     .checkout_modal {
         width: 100vw !important;
+        height: 100vh !important;
     }
 }
 
