@@ -100,7 +100,7 @@ const categoriesWithImages = catData?.category?.map((category, index) => {
                         </div>
                         <HighLightedTitle2 title1={'Why?'} title2={'Fewhew'} />
                         <WhyFewhew />
-                        <div className="contact_container ps-5">
+                        <div className="contact_container">
                             <HighLightedTitle2 title1={'Contact'} title2={'Us'} />
                             <SocialGroup />
                         </div>

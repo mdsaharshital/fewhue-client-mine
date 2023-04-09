@@ -4,6 +4,13 @@
     text-transform: uppercase;
     margin: 0 10vw 0 14vw;
     transform: skew(-10deg, -10deg);
+    margin: 10vw 10vw 14vw;
+}
+ /* For screens 768px or smaller */
+ @media (max-width: 768px) {
+    .highlighted_text {
+        margin: 10vw 10vw 14vw;
+    }
 }
 
 .highlighted_text-inner {

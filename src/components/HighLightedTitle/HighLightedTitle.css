@@ -8,3 +8,9 @@
     transform: skew(-10deg, -10deg);
     align-self: center;
 }
+  /* For screens 768px or smaller */
+  @media (max-width: 768px) {
+    .highlighted_title_first {
+        margin: 0 10vw 0 33vw;
+    }
+}

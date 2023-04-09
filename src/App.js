@@ -1,6 +1,6 @@
 import "./App.css";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navigation from "./components/Navigation/Navigation";
 import Header from "./components/Header/Header";
 import { Toaster } from "react-hot-toast";
@@ -15,6 +15,9 @@ function App() {
   const [showContact, setShowContact] = useState(false);
   const [showCheckout, setShowCheckout] = useState(false);
   const [showProductDetails, setShowProductDetails] = useState(false);
+  const [scrollDirection, setScrollDirection] = useState(
+    window.innerWidth <= 768 ? "vertical" : "horizontal"
+  );
 
   const handleCloseModal = (modalName) => {
     switch (modalName) {
@@ -48,6 +51,19 @@ function App() {
     }
   };
 
+  const scrollOptions = {
+    smooth: true,
+    direction: scrollDirection,
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScrollDirection(window.innerWidth <= 768 ? "vertical" : "horizontal");
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="App">
       <Toaster />
@@ -60,10 +76,7 @@ function App() {
         handleShopShow={() => handleShowModal("shop")}
       />
       <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          direction: "horizontal",
-        }}
+        options={scrollOptions}
         containerRef={containerRef}
         watch={[location]}
       >
