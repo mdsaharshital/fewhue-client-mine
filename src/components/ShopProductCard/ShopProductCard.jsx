@@ -25,7 +25,7 @@ const ShopProductCard = ({ product }) => {
                     alt="" />
                 <div className="shop_product_details_btn text-end px-2 py-2"
                 >
-                    <h5>view product</h5>
+                    <h5>{product.name}</h5>
                     <img src={caretRight} alt="" />
                 </div>
             </div>
