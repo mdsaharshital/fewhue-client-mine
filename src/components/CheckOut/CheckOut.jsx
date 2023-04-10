@@ -2,16 +2,12 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import congo_img from '../../assets/congo_order.png'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination, Navigation } from "swiper";
 import './Checkout.css'
-import CartSlide from '../Header/CartSlide';
 import { useDispatch, useSelector } from 'react-redux';
 import { useOrderProductMutation } from '../../feature/product/productSlice';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { emptyCart } from '../../feature/basket/basketSlice';
-import { InputGroup } from 'react-bootstrap';
 import SubTotal from './SubTotal';
 
 const CheckOut = ({ totalPrice, handleShopShow, handleShowCheckoutClose }) => {
