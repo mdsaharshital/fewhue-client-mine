@@ -102,20 +102,20 @@ const CheckOut = ({ totalPrice, handleShopShow, handleShowCheckoutClose }) => {
                                 <ol class="list-group list-group-numbered">
                                     {cart.map((product) => (<SubTotal product={product} />))}
                                 </ol>
-                                <div className="list-group">
-                                    <div class="list-group-item d-flex justify-content-between align-items-start fs-5">
+                                <div className="list-group my-4">
+                                    <div class="list-group-item d-flex justify-content-between align-items-start fs-5 bg-transparent">
                                         <div class="ms-3 me-auto my-2">
                                             <div class="fw-bold ">Price</div>
                                         </div>
                                         <span class="fw-bold">{totalPrice} Tk</span>
                                     </div>
-                                    <div class="list-group-item d-flex justify-content-between align-items-start fs-5">
+                                    <div class="list-group-item d-flex justify-content-between align-items-start fs-5 bg-transparent">
                                         <div class="ms-3 me-auto my-2">
                                             <div class="fw-bold ">Shipping</div>
                                         </div>
                                         <span class="fw-bold">{shippingCharge} Tk</span>
                                     </div>
-                                    <div class="list-group-item d-flex justify-content-between align-items-start fs-5">
+                                    <div class="list-group-item d-flex justify-content-between align-items-start fs-5 bg-transparent">
                                         <div class="ms-3 me-auto my-2">
                                             <div class="fw-bold ">Total Price</div>
                                         </div>
@@ -127,31 +127,7 @@ const CheckOut = ({ totalPrice, handleShopShow, handleShowCheckoutClose }) => {
                                 {isLoading ? 'Placing Order...' : 'Place Order'}
                             </Button>
                         </Form>
-                        {/* <div className='swiper_checkout'>
-                    <Swiper
-                        modules={[EffectCoverflow, Pagination, Navigation]}
-                        effect={"coverflow"}
-                        grabCursor={true}
-                        centeredSlides={true}
-                        slidesPerView={"auto"}
-                        coverflowEffect={{
-                            rotate: 0,
-                            stretch: 0,
-                            depth: 100,
-                            modifier: 1,
-                            slideShadows: true,
-                        }}
-                        pagination={true}
-                        navigation
-                        className="mySwiper"
-                    >
-                        {cart.map((product) => (
-                            <SwiperSlide productPrice={product.price} productImg={product.photo}>
-                                <CartSlide product={product} />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div> */}
+                        <p className='text-center my-4'>You are our valuable customer ❤️</p>
                     </div>
             }
             {/* <h1></h1> */}
