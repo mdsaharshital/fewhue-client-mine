@@ -34,7 +34,7 @@ function DashFooter() {
           </div>
           <div className="text-center" onClick={() => dispatch(signOutuser())}>
             <Link
-              to="/login"
+              to="/"
               className="px-4 py-2 text-decoration-none btn btn-outline-dark"
             >
               <FontAwesomeIcon icon={faSignOutAlt} className="me-2" />
