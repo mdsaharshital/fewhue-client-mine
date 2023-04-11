@@ -8,7 +8,7 @@
 
 .form_checkout {
     width: 100%;
-    padding:  2rem 2rem;
+    padding: 2rem 2rem;
 }
 
 .form_checkout_child {
@@ -62,25 +62,50 @@
 }
 
 .congo-div {
-    border: 2px solid black;
     padding: 3rem;
-    /* margin: 20px auto; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.congo-div img {
+    width: 300px;
+}
+
+.congo-div h2 {
+    font-size: 1.25em;
+}
+
+.congo-text {
+    font-size: 1.5em;
+}
+
+.congo-sub {
+    display: flex;
+    flex-direction: column;
+}
+
 @media screen and (max-width: 677px) {
     .input-flex-container {
         display: block;
     }
+
     .form_checkout {
         padding: 0 0 4rem 0;
+    }
+
+    .congo-text {
+        font-size: 1.25em;
+    }
+
+    .congo-div h2 {
+        font-size: 1.15em;
     }
 }
 
 @media screen and (min-width: 678px) {
-    
+
     .form_checkout input {
         height: 40px;
         font-size: 18px;

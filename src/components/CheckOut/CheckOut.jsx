@@ -53,17 +53,17 @@ const CheckOut = ({ totalPrice, handleShopShow, handleShowCheckoutClose }) => {
             {/* form */}
 
             {
-                orderData.email ? <div className='congo-div'>
+                orderData.email ? <div className='text-center congo-div'>
                     {/* check console for every data - shital */}
-                    <img src={congo_img} width={'200px'} alt="" />
-                    <h1 className='text-success fs-3 fw-bold me-4'>Congratulations. Your order has been successfully placed</h1>
-                    <div className="d-flex my-4">
+                    <img src={congo_img} alt="" />
+                    <h1 className='text-success congo-text fw-bold'>Congratulations. <br />Your order has successfully been placed</h1>
+                    <div className="congo-sub my-4">
                         <div className="">
-                            <h1 className='fs-5 me-3 '><span className="fw-bold">Email:</span> {orderData.email}</h1>
+                            <h2 className=' me-3 '><span className="fw-bold">Email:</span> {orderData.email}</h2>
                             {/* <h1 className='fs-5 me-3'>TotalPrice:{ orderData.totalPrice}</h1> */}
                         </div>
                         <div className="">
-                            <h1 className='fs-5 me-3'><span className="fw-bold">Order number :</span> <span className='text-decoration-underline'>{orderData.orderNumber}</span></h1>
+                            <h2 className=' me-3'><span className="fw-bold">Order number :</span> <span className='text-danger text-decoration-underline'>{orderData.orderNumber}</span></h2>
                         </div>
                     </div>
                     <h1 className='fs-5 me-3 fw-bold'>Please note this order number</h1>

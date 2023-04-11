@@ -10,6 +10,7 @@ body {
   height: 100vh;
   justify-content: center;
 }
+
 @media screen and (max-width: 768px) {
   .content {
     height: 100%;
@@ -39,6 +40,7 @@ body {
   height: auto;
   display: flex;
 }
+
 @media (min-width: 769px) {
   .contact_container {
     flex-direction: row;
@@ -53,6 +55,7 @@ body {
     margin: 0 auto;
   }
 }
+
 .contact_canvas {
   width: 50%;
   margin: auto;
@@ -73,11 +76,13 @@ body {
   align-items: center;
   position: relative;
 }
+
 @media screen and (max-width: 768px) {
   .landing {
     height: 100vh;
   }
 }
+
 .__button {
   pointer-events: auto;
   cursor: pointer;
@@ -182,11 +187,13 @@ body {
     stroke-dashoffset: 0;
   }
 }
+
 @media screen and (max-width: 610px) {
   .cap {
     width: 100%;
   }
 }
+
 .fadeIn1 {
   animation: fade1 2s forwards;
   animation-delay: 3s;
@@ -255,13 +262,14 @@ body {
   margin: 0 3vw;
   display: grid;
   grid-template-areas: '... ...'
-  '... gallery-image'
-  '... ...';
+    '... gallery-image'
+    '... ...';
   grid-template-columns: 8rem 21vmax;
   grid-template-rows: 8rem 28vmax 3rem;
   cursor: pointer;
   justify-content: center;
 }
+
 @media screen and (max-width: 768px) {
   .gallery__item {
     grid-template-columns: 4rem 27vmax;
@@ -459,5 +467,17 @@ input::-webkit-inner-spin-button {
 @media (max-width: 768px) {
   .card-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .contact_canvas {
+    width: 90%;
+
+  }
+}
+
+@media (max-width: 560px) {
+  .contact_canvas {
+    width: 100%;
+
   }
 }
