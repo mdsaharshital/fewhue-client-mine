@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+const storedCart = JSON.parse(localStorage.getItem("cart"));
 
 const initialState = {
   filter: {
@@ -7,7 +8,7 @@ const initialState = {
     },
   },
   productDetails: {},
-  cart: [],
+  cart: storedCart || [],
   isLoading: false,
   isError: false,
   error: "",
@@ -61,15 +62,24 @@ export const basketSlice = createSlice({
       const existingProductIndex = state.cart.findIndex(
         (product) => product._id === productToAdd._id
       );
+
       if (existingProductIndex !== -1) {
         const updatedCart = state.cart.map((product, index) =>
           index === existingProductIndex
             ? { ...product, quantity: product.quantity + 1 }
             : product
         );
+
+        // Update the cart in localStorage
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+
         return { ...state, cart: updatedCart };
       } else {
         const updatedCart = [...state.cart, { ...productToAdd, quantity: 1 }];
+
+        // Update the cart in localStorage
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+
         return { ...state, cart: updatedCart };
       }
     },
@@ -88,23 +98,39 @@ export const basketSlice = createSlice({
           const updatedCart = [...state.cart];
           updatedCart.splice(productIndex, 1, updatedProduct);
 
+          // Save the updated cart to localStorage
+          localStorage.setItem("cart", JSON.stringify(updatedCart));
+
           return {
             ...state,
             cart: updatedCart,
           };
         }
       } else {
+        const updatedCart = state.cart.filter(
+          (product) => product._id !== payload._id
+        );
+
+        // Save the updated cart to localStorage
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+
         return {
           ...state,
-          cart: state.cart.filter((product) => product._id !== payload._id),
+          cart: updatedCart,
         };
       }
     },
     removeFromCart: (state, { payload }) => {
       state.cart = state.cart.filter((c) => c._id !== payload._id);
+
+      // Save the updated cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     emptyCart: (state) => {
       state.cart = [];
+
+      // Save the updated cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
   },
 });

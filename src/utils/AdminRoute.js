@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
+import Loading from "./Loading";
 
 const AdminRoute = ({ children }) => {
   const { pathname } = useLocation();
@@ -8,7 +9,7 @@ const AdminRoute = ({ children }) => {
   const { email, role } = user;
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   if ((!isLoading && !email) || role !== 1) {

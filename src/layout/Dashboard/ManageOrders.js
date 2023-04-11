@@ -10,6 +10,7 @@ import "./Dashboard.css";
 import { useSelector } from "react-redux";
 import OrderStat from "./Comp/OrderStat";
 import ReactPaginate from "react-paginate";
+import Loading from "../../utils/Loading";
 
 const ManageOrders = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -48,11 +49,11 @@ const ManageOrders = () => {
     }
   };
   if (isLoading) {
-    return <p>Loading....</p>;
+    return <Loading />;
   }
   return (
     <div>
-      <h3 className="text-center fs-1 fw-bold">Admin ID</h3>
+      <h3 className="text-center fs-3 fw-bold">Admin ID</h3>
       <div className="w-100 w-md-50 mx-auto my-5 ">
         <ListGroup className="list-group-flush">
           <ListGroup.Item className="py-2" variant="primary">
@@ -137,7 +138,17 @@ const ManageOrders = () => {
           />
         </div>
       </Container>
-      <p className="text-center">Maintain order status carefully</p>
+      <p className="text-center mb-5">Maintain order status carefully</p>
+      <p className="text-center mb-5">
+        For any queries contact us{" "}
+        <a
+          href="mailto:mdsaharshitol@gmail.com"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Send email
+        </a>
+      </p>
     </div>
   );
 };
