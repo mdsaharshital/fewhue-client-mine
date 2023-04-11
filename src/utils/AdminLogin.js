@@ -96,7 +96,7 @@ const AdminLogin = () => {
             )}
           </Form.Group>
           <Button variant="primary" type="submit" size="lg">
-            Submit
+            Log in
           </Button>
         </Form>
       </div>

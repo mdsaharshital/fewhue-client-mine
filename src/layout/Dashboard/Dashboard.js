@@ -4,11 +4,12 @@ import { Link, Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signOutuser } from "../../feature/auth/authSlice";
 import DashFooter from "./Comp/DashFooter";
+import './Dashboard.css'
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   return (
-    <div className="">
+    <div className="pt-5 dash">
       <div className="container">
         <h2 className="text-center fw-bold pt-5">Dashboard</h2>
         <div className="d-flex justify-content-end">

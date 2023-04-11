@@ -126,12 +126,14 @@ const ManageOrders = () => {
             onPageChange={({ selected }) => setCurrentPage(selected)}
             containerClassName="pagination justify-content-center"
             pageClassName="page-item"
-            pageLinkClassName="page-link"
+            pageLinkClassName="btn btn-outline-dark mx-1"
             previousClassName="page-item"
-            previousLinkClassName="page-link"
+            previousLinkClassName="btn btn-outline-dark"
             nextClassName="page-item"
-            nextLinkClassName="page-link"
+            nextLinkClassName="btn btn-outline-dark"
             activeClassName="active"
+            activeLinkClassName="btn btn-dark text-white"
+            disabledLinkClassName="disabled"
           />
         </div>
       </Container>
