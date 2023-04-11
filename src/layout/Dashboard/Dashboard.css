@@ -1,11 +1,9 @@
-
-
-
 /* CSS for MANAGE ORDERS */
 .table-container {
   @media screen and (max-width: 768px) {
     overflow-x: auto;
   }
+
   margin-bottom: 40px;
 }
 
@@ -28,6 +26,7 @@
   border-radius: 4px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
 /* Default font size */
 .table_font_heading {
   font-size: 1.5rem;
@@ -39,8 +38,8 @@
     font-size: 1.2rem;
   }
 }
-  
-  /* .select-wrapper:after {
+
+/* .select-wrapper:after {
     content: '';
     position: absolute;
     top: 50%;
@@ -53,9 +52,23 @@
     border-color: #495057 transparent transparent transparent;
     pointer-events: none;
   } */
-  .dash_footer_container{
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+
+.dash {
+  min-height: 100vh;
+}
+
+.dash_footer_container {
+  background-color: rgb(240, 235, 228);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.dash_footer_container a {
+  border: none;
+  border-radius: 5px;
+}
