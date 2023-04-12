@@ -7,8 +7,9 @@ import { Toaster } from "react-hot-toast";
 import ProductDetails from "./layout/pages/ProductDetails";
 import Page from "./layout/pages/Page";
 import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
-function App() {
+function App({ title, description, keywords, author }) {
   const containerRef = useRef(null);
   const location = useLocation();
   const [showShop, setShowShop] = useState(false);
@@ -67,6 +68,14 @@ function App() {
   return (
     <div className="App">
       <Toaster />
+      {/* SEO */}
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="author" content={author} />
+        <title>{title}</title>
+      </Helmet>
       <Header
         showCheckout={showCheckout}
         handleShowCheckout={() => setShowCheckout(true)}
@@ -109,5 +118,12 @@ function App() {
     </div>
   );
 }
-
+App.defaultProps = {
+  title: " Shop Caps Online | Fewhue",
+  description:
+    "Discover the latest collection of caps and apparel from [Brand Name]. We're a Bangladeshi-based company that's all about hip hop culture, sports, music, and self-expression. Shop online now!",
+  keywords:
+    "Bangladeshi, headwear, apparel, caps, hip hop, culture, sports, music, self-expression",
+  author: "Binnary",
+};
 export default App;
