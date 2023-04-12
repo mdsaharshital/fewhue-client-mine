@@ -121,9 +121,9 @@ function App({ title, description, keywords, author }) {
 App.defaultProps = {
   title: " Shop Caps Online | Fewhue",
   description:
-    "Discover the latest collection of caps and apparel from [Brand Name]. We're a Bangladeshi-based company that's all about hip hop culture, sports, music, and self-expression. Shop online now!",
+    "Discover the latest collection of caps and apparel from Fewhue. We're a Bangladeshi-based company that's all about hip hop culture, sports, music, and self-expression. Shop online now!",
   keywords:
-    "Bangladeshi, headwear, apparel, caps, hip hop, culture, sports, music, self-expression",
+    "Bangladeshi, headwear, apparel, caps, Fewhue, hip hop, culture, sports, music, self-expression",
   author: "Binnary",
 };
 export default App;
