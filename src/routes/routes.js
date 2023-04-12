@@ -9,6 +9,7 @@ import AdminLogin from "../utils/AdminLogin";
 import OrderDetails from "../layout/Dashboard/OrderDetails";
 import ProductDetails from "../layout/Dashboard/UpdateProductDetails";
 import ManageCategory from "../layout/Dashboard/ManageCategory";
+import NotFound from "../layout/pages/NotFound";
 
 const routes = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const routes = createBrowserRouter([
         element: <ManageCategory />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
