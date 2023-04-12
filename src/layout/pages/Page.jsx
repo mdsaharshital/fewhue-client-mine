@@ -60,7 +60,7 @@ const categoriesWithImages = catData?.category?.map((category, index) => {
                                 <h1 data-scroll
                                     data-scroll-speed="1" className='love fadeIn3'>LOVE</h1>
 
-                                <button onClick={handleShopShow} className="__button button--janus mx-auto d-block fadeIn4"><span className='shop'>Shop Now</span></button>
+                               <button onClick={handleShopShow} className="__button button--janus mx-auto d-block fadeIn4"><span className='shop'>Shop Now</span></button>
                             </div>
                         </div>
                         <HighLightedTitle title1={'Available'} title2={'categories'} />
