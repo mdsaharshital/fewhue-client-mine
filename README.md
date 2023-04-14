@@ -1,5 +1,7 @@
 ## Frontend of fewHue
 
+[live site](https://fewheu.web.app/)
+
 So, basically, fewhue is a headwear brand.
 Initial feature to implement is
 
@@ -10,6 +12,7 @@ for admin
 
 - a admin login
 - admin panel to add, read, update, delete product
+- admin panel to add, read, update, delete category
 - see all(new) orders
 - set order status of new order(processing/shipping/delivered/cancel)
 
